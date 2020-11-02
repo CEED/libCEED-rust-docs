@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["VectorOpt",""]],"struct":[["Vector",""],["VectorView","A (host) view of a Vector with Deref to slice.  We can't make Vector itself Deref to slice because we can't handle the drop to call bind_ceed::CeedVectorRestoreArrayRead()."],["VectorViewMut","A mutable (host) view of a Vector with Deref to slice."]]});
