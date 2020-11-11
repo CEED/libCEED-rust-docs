@@ -1,3 +1,0 @@
-(function() {var implementors = {};
-implementors["libceed"] = [{"text":"impl StructuralPartialEq for MemType","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for NormType","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for TransposeMode","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for QuadMode","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for ElemTopology","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for EvalMode","synthetic":false,"types":[]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

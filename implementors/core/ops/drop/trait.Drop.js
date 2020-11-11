@@ -1,3 +1,0 @@
-(function() {var implementors = {};
-implementors["libceed"] = [{"text":"impl Drop for Basis","synthetic":false,"types":[]},{"text":"impl Drop for ElemRestriction","synthetic":false,"types":[]},{"text":"impl Drop for QFunction","synthetic":false,"types":[]},{"text":"impl Drop for Vector","synthetic":false,"types":[]},{"text":"impl&lt;'a&gt; Drop for VectorView&lt;'a&gt;","synthetic":false,"types":[]},{"text":"impl&lt;'a&gt; Drop for VectorViewMut&lt;'a&gt;","synthetic":false,"types":[]},{"text":"impl Drop for Ceed","synthetic":false,"types":[]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

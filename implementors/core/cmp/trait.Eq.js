@@ -1,3 +1,0 @@
-(function() {var implementors = {};
-implementors["libceed"] = [{"text":"impl Eq for MemType","synthetic":false,"types":[]},{"text":"impl Eq for NormType","synthetic":false,"types":[]},{"text":"impl Eq for TransposeMode","synthetic":false,"types":[]},{"text":"impl Eq for QuadMode","synthetic":false,"types":[]},{"text":"impl Eq for ElemTopology","synthetic":false,"types":[]},{"text":"impl Eq for EvalMode","synthetic":false,"types":[]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
