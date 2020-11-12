@@ -691,12 +691,12 @@
 <span class="kw">impl</span> <span class="ident">QFunctionCore</span> {
     <span class="comment">// Common implementation</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">Q</span>: <span class="ident">i32</span>, <span class="ident">u</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>], <span class="ident">v</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>]) {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">u_c</span> <span class="op">=</span> [<span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>(); <span class="number">16</span>];
-        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">16</span>, <span class="ident">u</span>.<span class="ident">len</span>()) {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">u_c</span> <span class="op">=</span> [<span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>(); <span class="kw">crate</span>::<span class="ident">MAX_QFUNCTION_FIELDS</span>];
+        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="kw">crate</span>::<span class="ident">MAX_QFUNCTION_FIELDS</span>, <span class="ident">u</span>.<span class="ident">len</span>()) {
             <span class="ident">u_c</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="ident">u</span>[<span class="ident">i</span>].<span class="ident">ptr</span>;
         }
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v_c</span> <span class="op">=</span> [<span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>(); <span class="number">16</span>];
-        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">16</span>, <span class="ident">v</span>.<span class="ident">len</span>()) {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v_c</span> <span class="op">=</span> [<span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>(); <span class="kw">crate</span>::<span class="ident">MAX_QFUNCTION_FIELDS</span>];
+        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="kw">crate</span>::<span class="ident">MAX_QFUNCTION_FIELDS</span>, <span class="ident">v</span>.<span class="ident">len</span>()) {
             <span class="ident">v_c</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="ident">v</span>[<span class="ident">i</span>].<span class="ident">ptr</span>;
         }
         <span class="kw">unsafe</span> {
@@ -821,14 +821,14 @@
     <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
+    <span class="doccomment">///   // Inputs</span>
     <span class="doccomment">///   let u = &amp;inputs[0];</span>
     <span class="doccomment">///   let weights = &amp;inputs[1];</span>
-    <span class="doccomment">///</span>
+    <span class="doccomment">///   // Outputs</span>
     <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///   for i in 0..q {</span>
-    <span class="doccomment">///     v[i] = u[i] * weights[i];</span>
-    <span class="doccomment">///   }</span>
+    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   v.iter_mut().zip(u.iter().zip(weights.iter())).for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
@@ -890,14 +890,14 @@
     <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
+    <span class="doccomment">///   // Inputs</span>
     <span class="doccomment">///   let u = &amp;inputs[0];</span>
     <span class="doccomment">///   let weights = &amp;inputs[1];</span>
-    <span class="doccomment">///</span>
+    <span class="doccomment">///   // Outputs</span>
     <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///   for i in 0..q {</span>
-    <span class="doccomment">///     v[i] = u[i] * weights[i];</span>
-    <span class="doccomment">///   }</span>
+    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   v.iter_mut().zip(u.iter().zip(weights.iter())).for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
@@ -935,16 +935,16 @@
     <span class="doccomment">///     outputs: &amp;mut [&amp;mut [f64]],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///     let u = &amp;inputs[0];</span>
-    <span class="doccomment">///     let weights = &amp;inputs[1];</span>
+    <span class="doccomment">///   // Inputs</span>
+    <span class="doccomment">///   let u = &amp;inputs[0];</span>
+    <span class="doccomment">///   let weights = &amp;inputs[1];</span>
+    <span class="doccomment">///   // Outputs</span>
+    <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///     let v = &amp;mut outputs[0];</span>
+    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   v.iter_mut().zip(u.iter().zip(weights.iter())).for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///     for i in 0..q {</span>
-    <span class="doccomment">///         v[i] = u[i] * weights[i];</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     return 0</span>
+    <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
