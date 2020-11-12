@@ -821,8 +821,8 @@ given Operator with a tensor basis for the active basis</p>
   <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">p_coarse</span> {
     <span class="ident">coarse</span>.<span class="ident">set_value</span>(<span class="number">0.0</span>);
     {
-       <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">array</span> <span class="op">=</span> <span class="ident">coarse</span>.<span class="ident">view_mut</span>();
-       <span class="ident">array</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="number">1.</span>;
+      <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">array</span> <span class="op">=</span> <span class="ident">coarse</span>.<span class="ident">view_mut</span>();
+      <span class="ident">array</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="number">1.</span>;
     }
     <span class="ident">basis_c_to_f</span>.<span class="ident">apply</span>(<span class="number">1</span>, <span class="ident">TransposeMode</span>::<span class="ident">NoTranspose</span>, <span class="ident">EvalMode</span>::<span class="ident">Interp</span>,
                        <span class="kw-2">&amp;</span><span class="ident">coarse</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fine</span>);
@@ -962,8 +962,8 @@ given Operator with a non-tensor basis for the active basis</p>
   <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">p_coarse</span> {
     <span class="ident">coarse</span>.<span class="ident">set_value</span>(<span class="number">0.0</span>);
     {
-       <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">array</span> <span class="op">=</span> <span class="ident">coarse</span>.<span class="ident">view_mut</span>();
-       <span class="ident">array</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="number">1.</span>;
+      <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">array</span> <span class="op">=</span> <span class="ident">coarse</span>.<span class="ident">view_mut</span>();
+      <span class="ident">array</span>[<span class="ident">i</span>] <span class="op">=</span> <span class="number">1.</span>;
     }
     <span class="ident">basis_c_to_f</span>.<span class="ident">apply</span>(<span class="number">1</span>, <span class="ident">TransposeMode</span>::<span class="ident">NoTranspose</span>, <span class="ident">EvalMode</span>::<span class="ident">Interp</span>,
                        <span class="kw-2">&amp;</span><span class="ident">coarse</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fine</span>);
