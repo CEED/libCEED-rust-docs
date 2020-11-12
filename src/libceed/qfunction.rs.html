@@ -527,6 +527,10 @@
 <span id="526">526</span>
 <span id="527">527</span>
 <span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -664,10 +668,11 @@
 <span class="doccomment">///</span>
 <span class="doccomment">///   // Loop over quadrature points</span>
 <span class="doccomment">///   v.iter_mut()</span>
-<span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
-<span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
+<span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
+<span class="doccomment">///     .for_each(|(v, (u, w))| *v = u * w);</span>
 <span class="doccomment">///</span>
-<span class="doccomment">///   return 0</span>
+<span class="doccomment">///   // Return clean error code</span>
+<span class="doccomment">///   0</span>
 <span class="doccomment">/// };</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
@@ -843,10 +848,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
     <span class="doccomment">///   v.iter_mut()</span>
-    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
-    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
+    <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///     .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///   return 0</span>
+    <span class="doccomment">///   // Return clean error code</span>
+    <span class="doccomment">///   0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
@@ -914,10 +920,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
     <span class="doccomment">///   v.iter_mut()</span>
-    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
-    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
+    <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///     .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///   return 0</span>
+    <span class="doccomment">///   // Return clean error code</span>
+    <span class="doccomment">///   0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
@@ -948,9 +955,9 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
-    <span class="doccomment">///     q: usize,</span>
-    <span class="doccomment">///     inputs: &amp;[&amp;[f64]],</span>
-    <span class="doccomment">///     outputs: &amp;mut [&amp;mut [f64]],</span>
+    <span class="doccomment">///   q: usize,</span>
+    <span class="doccomment">///   inputs: &amp;[&amp;[f64]],</span>
+    <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   // Inputs</span>
@@ -961,10 +968,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
     <span class="doccomment">///   v.iter_mut()</span>
-    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
-    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
+    <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///     .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///   return 0</span>
+    <span class="doccomment">///   // Return clean error code</span>
+    <span class="doccomment">///   0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
