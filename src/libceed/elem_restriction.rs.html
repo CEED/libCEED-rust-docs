@@ -422,6 +422,7 @@
 <span id="421">421</span>
 <span id="422">422</span>
 <span id="423">423</span>
+<span id="424">424</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -451,6 +452,7 @@
 <span class="doccomment">/// Construct a ElemRestrictionOpt reference from a ElemRestriction reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ElemRestriction</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ElemRestrictionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">restr</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ElemRestriction</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">restr</span>.<span class="ident">ptr</span> <span class="op">!=</span> <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CEED_ELEMRESTRICTION_NONE</span> });
         <span class="self">Self</span>::<span class="prelude-val">Some</span>(<span class="ident">restr</span>)
     }
 }

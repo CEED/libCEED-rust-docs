@@ -525,6 +525,8 @@
 <span id="524">524</span>
 <span id="525">525</span>
 <span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -556,6 +558,7 @@
 <span class="doccomment">/// Construct a QFunctionOpt reference from a QFunction reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunction</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">qfunc</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunction</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">qfunc</span>.<span class="ident">qf_core</span>.<span class="ident">ptr</span> <span class="op">!=</span> <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CEED_QFUNCTION_NONE</span> });
         <span class="self">Self</span>::<span class="ident">SomeQFunction</span>(<span class="ident">qfunc</span>)
     }
 }
@@ -563,6 +566,7 @@
 <span class="doccomment">/// Construct a QFunctionOpt reference from a QFunction by Name reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunctionByName</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">qfunc</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunctionByName</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">qfunc</span>.<span class="ident">qf_core</span>.<span class="ident">ptr</span> <span class="op">!=</span> <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CEED_QFUNCTION_NONE</span> });
         <span class="self">Self</span>::<span class="ident">SomeQFunctionByName</span>(<span class="ident">qfunc</span>)
     }
 }

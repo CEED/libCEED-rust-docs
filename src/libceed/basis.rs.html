@@ -308,6 +308,7 @@
 <span id="307">307</span>
 <span id="308">308</span>
 <span id="309">309</span>
+<span id="310">310</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -337,6 +338,7 @@
 <span class="doccomment">/// Construct a BasisOpt reference from a Basis reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Basis</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">BasisOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">basis</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Basis</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">basis</span>.<span class="ident">ptr</span> <span class="op">!=</span> <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CEED_BASIS_COLLOCATED</span> });
         <span class="self">Self</span>::<span class="prelude-val">Some</span>(<span class="ident">basis</span>)
     }
 }
