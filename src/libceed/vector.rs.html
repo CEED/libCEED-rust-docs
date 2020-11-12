@@ -494,7 +494,7 @@
     }
 }
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">VectorOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Transform a Rust libCEED Vector into C libCEED CeedVector</span>
+    <span class="doccomment">/// Transform a Rust libCEED VectorOpt into C libCEED CeedVector</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">to_raw</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedVector</span> {
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="self">Self</span>::<span class="prelude-val">Some</span>(<span class="ident">vec</span>) <span class="op">=&gt;</span> <span class="ident">vec</span>.<span class="ident">ptr</span>,

@@ -457,7 +457,7 @@
     }
 }
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ElemRestrictionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Transform a Rust libCEED ElemRestriction into C libCEED</span>
+    <span class="doccomment">/// Transform a Rust libCEED ElemRestrictionOpt into C libCEED</span>
     <span class="doccomment">/// CeedElemRestriction</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">to_raw</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestriction</span> {
         <span class="kw">match</span> <span class="self">self</span> {
