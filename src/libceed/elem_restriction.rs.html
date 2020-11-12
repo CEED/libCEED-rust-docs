@@ -448,7 +448,7 @@
     <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ElemRestriction</span>),
     <span class="prelude-val">None</span>,
 }
-<span class="doccomment">/// Contruct a ElemRestrictionOpt reference from a ElemRestriction reference</span>
+<span class="doccomment">/// Construct a ElemRestrictionOpt reference from a ElemRestriction reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ElemRestriction</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ElemRestrictionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">restr</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ElemRestriction</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span>::<span class="prelude-val">Some</span>(<span class="ident">restr</span>)

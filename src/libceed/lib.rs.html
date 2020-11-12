@@ -612,6 +612,8 @@
 <span id="611">611</span>
 <span id="612">612</span>
 <span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -673,7 +675,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">vector</span>;
 
 <span class="comment">// -----------------------------------------------------------------------------</span>
-<span class="comment">// Constants for library interally</span>
+<span class="comment">// Constants for library internally</span>
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="kw">const</span> <span class="ident">MAX_BUFFER_LENGTH</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="number">4096</span>;
 <span class="kw">const</span> <span class="ident">MAX_QFUNCTION_FIELDS</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">16</span>;
@@ -782,7 +784,7 @@
 <span class="comment">// Object constructors</span>
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="kw">impl</span> <span class="ident">Ceed</span> {
-    <span class="doccomment">/// Returns a Ceed context initalized with the specified resource</span>
+    <span class="doccomment">/// Returns a Ceed context initialized with the specified resource</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # arguments</span>
     <span class="doccomment">///</span>
@@ -801,7 +803,7 @@
         <span class="ident">Ceed</span> { <span class="ident">ptr</span> }
     }
 
-    <span class="doccomment">/// Default initalizer for testing</span>
+    <span class="doccomment">/// Default initializer for testing</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_init</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="comment">// Convert to C string</span>
@@ -1075,14 +1077,16 @@
     <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
+    <span class="doccomment">///   // Inputs</span>
     <span class="doccomment">///   let u = &amp;inputs[0];</span>
     <span class="doccomment">///   let weights = &amp;inputs[1];</span>
-    <span class="doccomment">///</span>
+    <span class="doccomment">///   // Outputs</span>
     <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///   for i in 0..q {</span>
-    <span class="doccomment">///       v[i] = u[i] * weights[i];</span>
-    <span class="doccomment">///   }</span>
+    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   v.iter_mut()</span>
+    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
@@ -1117,7 +1121,7 @@
     <span class="doccomment">///              points</span>
     <span class="doccomment">/// * `dqf`  - QFunction defining the action of the Jacobian of the qf (or</span>
     <span class="doccomment">///              qfunction_none)</span>
-    <span class="doccomment">/// * `dqfT` - QFunction defining teh action of the transpose of the</span>
+    <span class="doccomment">/// * `dqfT` - QFunction defining the action of the transpose of the</span>
     <span class="doccomment">///              Jacobian of the qf (or qfunction_none)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```</span>

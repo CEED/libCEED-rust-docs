@@ -517,6 +517,14 @@
 <span id="516">516</span>
 <span id="517">517</span>
 <span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -545,14 +553,14 @@
     <span class="prelude-val">None</span>,
 }
 
-<span class="doccomment">/// Contruct a QFunctionOpt reference from a QFunction reference</span>
+<span class="doccomment">/// Construct a QFunctionOpt reference from a QFunction reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunction</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">qfunc</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunction</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span>::<span class="ident">SomeQFunction</span>(<span class="ident">qfunc</span>)
     }
 }
 
-<span class="doccomment">/// Contruct a QFunctionOpt reference from a QFunction by Name reference</span>
+<span class="doccomment">/// Construct a QFunctionOpt reference from a QFunction by Name reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunctionByName</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">qfunc</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">QFunctionByName</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span>::<span class="ident">SomeQFunctionByName</span>(<span class="ident">qfunc</span>)
@@ -644,14 +652,16 @@
 <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
 <span class="doccomment">/// | -&gt; i32</span>
 <span class="doccomment">/// {</span>
+<span class="doccomment">///   // Inputs</span>
 <span class="doccomment">///   let u = &amp;inputs[0];</span>
 <span class="doccomment">///   let weights = &amp;inputs[1];</span>
-<span class="doccomment">///</span>
+<span class="doccomment">///   // Outputs</span>
 <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
 <span class="doccomment">///</span>
-<span class="doccomment">///   for i in 0..q {</span>
-<span class="doccomment">///       v[i] = u[i] * weights[i];</span>
-<span class="doccomment">///   }</span>
+<span class="doccomment">///   // Loop over quadrature points</span>
+<span class="doccomment">///   v.iter_mut()</span>
+<span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
+<span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">///   return 0</span>
 <span class="doccomment">/// };</span>
@@ -766,7 +776,7 @@
             <span class="ident">output_sizes</span>,
         };
 
-        <span class="comment">// Create QF</span>
+        <span class="comment">// Create QFunction</span>
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionCreateInterior</span>(
                 <span class="ident">ceed</span>.<span class="ident">ptr</span>,
@@ -777,7 +787,7 @@
             )
         };
 
-        <span class="comment">// Create QF contetx</span>
+        <span class="comment">// Create QFunction context</span>
         <span class="kw">let</span> <span class="ident">qf_ctx_ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
 
         <span class="comment">// Create object</span>
@@ -828,7 +838,9 @@
     <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
-    <span class="doccomment">///   v.iter_mut().zip(u.iter().zip(weights.iter())).for_each(|(v, (u, w))| *v = u * w);</span>
+    <span class="doccomment">///   v.iter_mut()</span>
+    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
@@ -897,7 +909,9 @@
     <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
-    <span class="doccomment">///   v.iter_mut().zip(u.iter().zip(weights.iter())).for_each(|(v, (u, w))| *v = u * w);</span>
+    <span class="doccomment">///   v.iter_mut()</span>
+    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
@@ -942,7 +956,9 @@
     <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
-    <span class="doccomment">///   v.iter_mut().zip(u.iter().zip(weights.iter())).for_each(|(v, (u, w))| *v = u * w);</span>
+    <span class="doccomment">///   v.iter_mut()</span>
+    <span class="doccomment">///       .zip(u.iter().zip(weights.iter()))</span>
+    <span class="doccomment">///       .for_each(|(v, (u, w))| *v = u * w);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   return 0</span>
     <span class="doccomment">/// };</span>
@@ -1008,18 +1024,18 @@
     <span class="doccomment">/// let U = ceed.vector_from_slice(&amp;u);</span>
     <span class="doccomment">/// let mut V = ceed.vector(Q);</span>
     <span class="doccomment">/// V.set_value(0.0);</span>
-    <span class="doccomment">/// let mut Qdata = ceed.vector(Q);</span>
-    <span class="doccomment">/// Qdata.set_value(0.0);</span>
+    <span class="doccomment">/// let mut qdata = ceed.vector(Q);</span>
+    <span class="doccomment">/// qdata.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   let mut input = vec![J, W];</span>
-    <span class="doccomment">///   let mut output = vec![Qdata];</span>
+    <span class="doccomment">///   let mut output = vec![qdata];</span>
     <span class="doccomment">///   qf_build.apply(Q as i32, &amp;input, &amp;output);</span>
-    <span class="doccomment">///   Qdata = output.remove(0);</span>
+    <span class="doccomment">///   qdata = output.remove(0);</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   let mut input = vec![Qdata, U];</span>
+    <span class="doccomment">///   let mut input = vec![qdata, U];</span>
     <span class="doccomment">///   let mut output = vec![V];</span>
     <span class="doccomment">///   qf_mass.apply(Q as i32, &amp;input, &amp;output);</span>
     <span class="doccomment">///   V = output.remove(0);</span>

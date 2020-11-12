@@ -480,7 +480,7 @@
     <span class="ident">Active</span>,
     <span class="prelude-val">None</span>,
 }
-<span class="doccomment">/// Contruct a VectorOpt reference from a Vector reference</span>
+<span class="doccomment">/// Construct a VectorOpt reference from a Vector reference</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Vector</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">VectorOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">vec</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Vector</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">vec</span>.<span class="ident">ptr</span> <span class="op">!=</span> <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CEED_VECTOR_NONE</span> });
