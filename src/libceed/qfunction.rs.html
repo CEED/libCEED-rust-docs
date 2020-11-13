@@ -650,9 +650,9 @@
 <span class="doccomment">/// # use libceed::prelude::*;</span>
 <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
 <span class="doccomment">/// let mut user_f = |</span>
-<span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS], // Inputs</span>
-<span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],      // Outputs</span>
-<span class="doccomment">/// | -&gt; i32</span>
+<span class="doccomment">///   [u, weights, ..]: QFunctionInputs,</span>
+<span class="doccomment">///   [v, ..]: QFunctionOutputs,</span>
+<span class="doccomment">/// |</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   // Iterate over quadrature points</span>
 <span class="doccomment">///   v</span>
@@ -837,9 +837,9 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
-    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS], // Inputs</span>
-    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],      // Outputs</span>
-    <span class="doccomment">/// | -&gt; i32</span>
+    <span class="doccomment">///   [u, weights, ..]: QFunctionInputs,</span>
+    <span class="doccomment">///   [v, ..]: QFunctionOutputs,</span>
+    <span class="doccomment">/// |</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
@@ -903,9 +903,9 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
-    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS], // Inputs</span>
-    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],      // Outputs</span>
-    <span class="doccomment">/// | -&gt; i32</span>
+    <span class="doccomment">///   [u, weights, ..]: QFunctionInputs,</span>
+    <span class="doccomment">///   [v, ..]: QFunctionOutputs,</span>
+    <span class="doccomment">/// |</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
@@ -945,9 +945,9 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
-    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS], // Inputs</span>
-    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],      // Outputs</span>
-    <span class="doccomment">/// | -&gt; i32</span>
+    <span class="doccomment">///   [u, weights, ..]: QFunctionInputs,</span>
+    <span class="doccomment">///   [v, ..]: QFunctionOutputs,</span>
+    <span class="doccomment">/// |</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
