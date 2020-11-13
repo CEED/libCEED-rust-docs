@@ -1697,14 +1697,6 @@
 <span id="1696">1696</span>
 <span id="1697">1697</span>
 <span id="1698">1698</span>
-<span id="1699">1699</span>
-<span id="1700">1700</span>
-<span id="1701">1701</span>
-<span id="1702">1702</span>
-<span id="1703">1703</span>
-<span id="1704">1704</span>
-<span id="1705">1705</span>
-<span id="1706">1706</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -2420,15 +2412,11 @@
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let mut mass_2_comp = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [u, qdata, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let [u, qdata, ..] = inputs;</span>
-    <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let [v, ..] = outputs;</span>
-    <span class="doccomment">///</span>
+    <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   for i in 0..q {</span>
     <span class="doccomment">///     v[i + 0*q] = u[i + 1*q] * qdata[i];</span>
     <span class="doccomment">///     v[i + 1*q] = u[i + 0*q] * qdata[i];</span>
@@ -2556,15 +2544,11 @@
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let mut mass_2_comp = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [u, qdata, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let [u, qdata, ..] = inputs;</span>
-    <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let [v, ..] = outputs;</span>
-    <span class="doccomment">///</span>
+    <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   for i in 0..q {</span>
     <span class="doccomment">///     v[i + 0*q] = u[i + 1*q] * qdata[i];</span>
     <span class="doccomment">///     v[i + 1*q] = u[i + 0*q] * qdata[i];</span>

@@ -610,7 +610,6 @@
 <span id="609">609</span>
 <span id="610">610</span>
 <span id="611">611</span>
-<span id="612">612</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -1074,8 +1073,7 @@
     <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS], // outputs</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
     <span class="doccomment">///     .iter_mut()</span>
     <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>

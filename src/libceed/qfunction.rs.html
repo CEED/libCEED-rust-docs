@@ -524,26 +524,6 @@
 <span id="523">523</span>
 <span id="524">524</span>
 <span id="525">525</span>
-<span id="526">526</span>
-<span id="527">527</span>
-<span id="528">528</span>
-<span id="529">529</span>
-<span id="530">530</span>
-<span id="531">531</span>
-<span id="532">532</span>
-<span id="533">533</span>
-<span id="534">534</span>
-<span id="535">535</span>
-<span id="536">536</span>
-<span id="537">537</span>
-<span id="538">538</span>
-<span id="539">539</span>
-<span id="540">540</span>
-<span id="541">541</span>
-<span id="542">542</span>
-<span id="543">543</span>
-<span id="544">544</span>
-<span id="545">545</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -669,16 +649,11 @@
 <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
 <span class="doccomment">/// let mut user_f = |</span>
 <span class="doccomment">///   q: usize,</span>
-<span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-<span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+<span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+<span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
 <span class="doccomment">/// | -&gt; i32</span>
 <span class="doccomment">/// {</span>
-<span class="doccomment">///   // Inputs</span>
-<span class="doccomment">///   let [u, weights, ..] = inputs;</span>
-<span class="doccomment">///   // Outputs</span>
-<span class="doccomment">///   let [v, ..] = outputs;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///   // Loop over quadrature points</span>
+<span class="doccomment">///   // Iterate over quadrature points</span>
 <span class="doccomment">///   v</span>
 <span class="doccomment">///     .iter_mut()</span>
 <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
@@ -862,16 +837,11 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let [u, weights, ..] = inputs;</span>
-    <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let [v, ..] = outputs;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
     <span class="doccomment">///     .iter_mut()</span>
     <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
@@ -934,16 +904,11 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let [u, weights, ..] = inputs;</span>
-    <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let [v, ..] = outputs;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
     <span class="doccomment">///     .iter_mut()</span>
     <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
@@ -982,16 +947,11 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let [u, weights, ..] = inputs;</span>
-    <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let [v, ..] = outputs;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///   // Loop over quadrature points</span>
+    <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   v</span>
     <span class="doccomment">///     .iter_mut()</span>
     <span class="doccomment">///     .zip(u.iter().zip(weights.iter()))</span>
