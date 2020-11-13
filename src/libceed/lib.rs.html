@@ -609,6 +609,8 @@
 <span id="608">608</span>
 <span id="609">609</span>
 <span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -652,7 +654,9 @@
         <span class="ident">basis</span>::{<span class="self">self</span>, <span class="ident">Basis</span>, <span class="ident">BasisOpt</span>},
         <span class="ident">elem_restriction</span>::{<span class="self">self</span>, <span class="ident">ElemRestriction</span>, <span class="ident">ElemRestrictionOpt</span>},
         <span class="ident">operator</span>::{<span class="self">self</span>, <span class="ident">CompositeOperator</span>, <span class="ident">Operator</span>},
-        <span class="ident">qfunction</span>::{<span class="self">self</span>, <span class="ident">QFunction</span>, <span class="ident">QFunctionByName</span>, <span class="ident">QFunctionOpt</span>},
+        <span class="ident">qfunction</span>::{
+            <span class="self">self</span>, <span class="ident">QFunction</span>, <span class="ident">QFunctionByName</span>, <span class="ident">QFunctionInputs</span>, <span class="ident">QFunctionOpt</span>, <span class="ident">QFunctionOutputs</span>,
+        },
         <span class="ident">vector</span>::{<span class="self">self</span>, <span class="ident">Vector</span>, <span class="ident">VectorOpt</span>},
         <span class="ident">ElemTopology</span>, <span class="ident">EvalMode</span>, <span class="ident">MemType</span>, <span class="ident">NormType</span>, <span class="ident">QuadMode</span>, <span class="ident">TransposeMode</span>, <span class="ident">MAX_QFUNCTION_FIELDS</span>,
     };
@@ -1067,8 +1071,8 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
-    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS], // Inputs</span>
-    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],      // Outputs</span>
+    <span class="doccomment">///   [u, weights, ..]: QFunctionInputs,</span>
+    <span class="doccomment">///   [v, ..]: QFunctionOutputs,</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   // Iterate over quadrature points</span>

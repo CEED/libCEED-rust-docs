@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["QFunctionOpt",""]],"struct":[["QFunction",""],["QFunctionByName",""]],"type":[["QFunctionUserClosure",""]]});
+initSidebarItems({"enum":[["QFunctionOpt",""]],"struct":[["QFunction",""],["QFunctionByName",""]],"type":[["QFunctionInputs",""],["QFunctionOutputs",""],["QFunctionUserClosure",""]]});
