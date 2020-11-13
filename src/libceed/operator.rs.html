@@ -2420,14 +2420,14 @@
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let mut mass_2_comp = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: &amp;[&amp;[f64]],</span>
-    <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
+    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   let u = &amp;inputs[0];</span>
-    <span class="doccomment">///   let qdata = &amp;inputs[1];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
+    <span class="doccomment">///   // Inputs</span>
+    <span class="doccomment">///   let [u, qdata, ..] = inputs;</span>
+    <span class="doccomment">///   // Outputs</span>
+    <span class="doccomment">///   let [v, ..] = outputs;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   for i in 0..q {</span>
     <span class="doccomment">///     v[i + 0*q] = u[i + 1*q] * qdata[i];</span>
@@ -2556,14 +2556,14 @@
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let mut mass_2_comp = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: &amp;[&amp;[f64]],</span>
-    <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
+    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   let u = &amp;inputs[0];</span>
-    <span class="doccomment">///   let qdata = &amp;inputs[1];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
+    <span class="doccomment">///   // Inputs</span>
+    <span class="doccomment">///   let [u, qdata, ..] = inputs;</span>
+    <span class="doccomment">///   // Outputs</span>
+    <span class="doccomment">///   let [v, ..] = outputs;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   for i in 0..q {</span>
     <span class="doccomment">///     v[i + 0*q] = u[i + 1*q] * qdata[i];</span>

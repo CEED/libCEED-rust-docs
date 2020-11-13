@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["ElemTopology",""],["EvalMode",""],["MemType",""],["NormType",""],["QuadMode",""],["TransposeMode",""]],"mod":[["basis",""],["elem_restriction",""],["operator",""],["prelude",""],["qfunction",""],["vector",""]],"struct":[["Ceed",""]]});
+initSidebarItems({"constant":[["MAX_QFUNCTION_FIELDS",""]],"enum":[["ElemTopology",""],["EvalMode",""],["MemType",""],["NormType",""],["QuadMode",""],["TransposeMode",""]],"mod":[["basis",""],["elem_restriction",""],["operator",""],["prelude",""],["qfunction",""],["vector",""]],"struct":[["Ceed",""]]});

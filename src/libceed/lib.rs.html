@@ -614,7 +614,6 @@
 <span id="613">613</span>
 <span id="614">614</span>
 <span id="615">615</span>
-<span id="616">616</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -660,7 +659,7 @@
         <span class="ident">operator</span>::{<span class="self">self</span>, <span class="ident">CompositeOperator</span>, <span class="ident">Operator</span>},
         <span class="ident">qfunction</span>::{<span class="self">self</span>, <span class="ident">QFunction</span>, <span class="ident">QFunctionByName</span>, <span class="ident">QFunctionOpt</span>},
         <span class="ident">vector</span>::{<span class="self">self</span>, <span class="ident">Vector</span>, <span class="ident">VectorOpt</span>},
-        <span class="ident">ElemTopology</span>, <span class="ident">EvalMode</span>, <span class="ident">MemType</span>, <span class="ident">NormType</span>, <span class="ident">QuadMode</span>, <span class="ident">TransposeMode</span>,
+        <span class="ident">ElemTopology</span>, <span class="ident">EvalMode</span>, <span class="ident">MemType</span>, <span class="ident">NormType</span>, <span class="ident">QuadMode</span>, <span class="ident">TransposeMode</span>, <span class="ident">MAX_QFUNCTION_FIELDS</span>,
     };
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::<span class="ident">CString</span>;
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
@@ -679,7 +678,7 @@
 <span class="comment">// Constants for library internally</span>
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="kw">const</span> <span class="ident">MAX_BUFFER_LENGTH</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="number">4096</span>;
-<span class="kw">const</span> <span class="ident">MAX_QFUNCTION_FIELDS</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">16</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_QFUNCTION_FIELDS</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">16</span>;
 
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="comment">// Enums for libCEED</span>
@@ -1074,15 +1073,14 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: &amp;[&amp;[f64]],</span>
-    <span class="doccomment">///   outputs: &amp;mut [&amp;mut [f64]],</span>
+    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let u = &amp;inputs[0];</span>
-    <span class="doccomment">///   let weights = &amp;inputs[1];</span>
+    <span class="doccomment">///   let [u, weights, ..] = inputs;</span>
     <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let v = &amp;mut outputs[0];</span>
+    <span class="doccomment">///   let [v, ..] = outputs;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
     <span class="doccomment">///   v.iter_mut()</span>
