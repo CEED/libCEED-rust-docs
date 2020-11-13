@@ -611,10 +611,6 @@
 <span id="610">610</span>
 <span id="611">611</span>
 <span id="612">612</span>
-<span id="613">613</span>
-<span id="614">614</span>
-<span id="615">615</span>
-<span id="616">616</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -1074,14 +1070,10 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let mut user_f = |</span>
     <span class="doccomment">///   q: usize,</span>
-    <span class="doccomment">///   inputs: [&amp;[f64]; MAX_QFUNCTION_FIELDS],</span>
-    <span class="doccomment">///   outputs: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS],</span>
+    <span class="doccomment">///   [u, weights, ..]: [&amp;[f64]; MAX_QFUNCTION_FIELDS], // inputs</span>
+    <span class="doccomment">///   [v, ..]: [&amp;mut [f64]; MAX_QFUNCTION_FIELDS], // outputs</span>
     <span class="doccomment">/// | -&gt; i32</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   // Inputs</span>
-    <span class="doccomment">///   let [u, weights, ..] = inputs;</span>
-    <span class="doccomment">///   // Outputs</span>
-    <span class="doccomment">///   let [v, ..] = outputs;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Loop over quadrature points</span>
     <span class="doccomment">///   v</span>
