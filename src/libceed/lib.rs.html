@@ -617,6 +617,16 @@
 <span id="616">616</span>
 <span id="617">617</span>
 <span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -695,6 +705,8 @@
 <span class="comment">// Enums for libCEED</span>
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="doccomment">/// Many Ceed interfaces take or return pointers to memory.  This enum is used to</span>
+<span class="doccomment">/// specify where the memory being provided or requested must reside.</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">MemType</span> {
     <span class="ident">Host</span>,
     <span class="ident">Device</span>,
@@ -703,6 +715,7 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="comment">// OwnPointer will not be used by user but is included for internal use</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
+<span class="doccomment">/// Conveys ownership status of arrays passed to Ceed interfaces.</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">CopyMode</span> {
     <span class="ident">CopyValues</span>,
     <span class="ident">UsePointer</span>,
@@ -710,6 +723,7 @@
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="doccomment">/// Denotes type of vector norm to be computed</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">NormType</span> {
     <span class="ident">One</span>,
     <span class="ident">Two</span>,
@@ -717,18 +731,21 @@
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="doccomment">/// Denotes whether a linear transformation or its transpose should be applied</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">TransposeMode</span> {
     <span class="ident">NoTranspose</span>,
     <span class="ident">Transpose</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="doccomment">/// Type of quadrature; also used for location of nodes</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">QuadMode</span> {
     <span class="ident">Gauss</span>,
     <span class="ident">GaussLobatto</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="doccomment">/// Type of basis shape to create non-tensor H1 element basis</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ElemTopology</span> {
     <span class="ident">Line</span>,
     <span class="ident">Triangle</span>,
@@ -740,6 +757,7 @@
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="doccomment">/// Basis evaluation mode</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">EvalMode</span> {
     <span class="prelude-val">None</span>,
     <span class="ident">Interp</span>,
@@ -752,6 +770,8 @@
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="comment">// Ceed context wrapper</span>
 <span class="comment">// -----------------------------------------------------------------------------</span>
+<span class="doccomment">/// A Ceed is a library context representing control of a logical hardware</span>
+<span class="doccomment">/// resource.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ceed</span> {
     <span class="ident">ptr</span>: <span class="ident">bind_ceed</span>::<span class="ident">Ceed</span>,
