@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -798,7 +800,7 @@
     <span class="doccomment">/// let ceed = libceed::Ceed::init(&quot;/cpu/self/ref/serial&quot;);</span>
     <span class="doccomment">/// println!(&quot;{}&quot;, ceed);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sizeloc</span> <span class="op">=</span> <span class="kw">crate</span>::<span class="ident">MAX_BUFFER_LENGTH</span>;
         <span class="kw">let</span> <span class="ident">cstring</span> <span class="op">=</span> <span class="kw">unsafe</span> {
@@ -824,7 +826,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// let ceed = libceed::Ceed::init(&quot;/cpu/self/ref/serial&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">init</span>(<span class="ident">resource</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">init</span>(<span class="ident">resource</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="comment">// Convert to C string</span>
         <span class="kw">let</span> <span class="ident">c_resource</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">resource</span>).<span class="ident">expect</span>(<span class="string">&quot;CString::new failed&quot;</span>);
 
@@ -836,7 +838,7 @@
 
     <span class="doccomment">/// Default initializer for testing</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_init</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_init</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="comment">// Convert to C string</span>
         <span class="kw">let</span> <span class="ident">resource</span> <span class="op">=</span> <span class="string">&quot;/cpu/self/ref/serial&quot;</span>;
         <span class="kw">crate</span>::<span class="ident">Ceed</span>::<span class="ident">init</span>(<span class="ident">resource</span>)
@@ -853,7 +855,7 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let vec = ceed.vector(10);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">vector</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">Vector</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">vector</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vector</span> {
         <span class="ident">Vector</span>::<span class="ident">create</span>(<span class="self">self</span>, <span class="ident">n</span>)
     }
 
@@ -869,7 +871,7 @@
     <span class="doccomment">/// let vec = ceed.vector_from_slice(&amp;[1., 2., 3.]);</span>
     <span class="doccomment">/// assert_eq!(vec.length(), 3);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">vector_from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>]) <span class="op">-&gt;</span> <span class="ident">Vector</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">vector_from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vector</span> {
         <span class="ident">Vector</span>::<span class="ident">from_slice</span>(<span class="self">self</span>, <span class="ident">slice</span>)
     }
 
@@ -915,7 +917,7 @@
         <span class="ident">lsize</span>: <span class="ident">usize</span>,
         <span class="ident">mtype</span>: <span class="ident">MemType</span>,
         <span class="ident">offsets</span>: <span class="kw-2">&amp;</span>[<span class="ident">i32</span>],
-    ) <span class="op">-&gt;</span> <span class="ident">ElemRestriction</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ElemRestriction</span> {
         <span class="ident">ElemRestriction</span>::<span class="ident">create</span>(
             <span class="self">self</span>, <span class="ident">nelem</span>, <span class="ident">elemsize</span>, <span class="ident">ncomp</span>, <span class="ident">compstride</span>, <span class="ident">lsize</span>, <span class="ident">mtype</span>, <span class="ident">offsets</span>,
         )
@@ -956,7 +958,7 @@
         <span class="ident">ncomp</span>: <span class="ident">usize</span>,
         <span class="ident">lsize</span>: <span class="ident">usize</span>,
         <span class="ident">strides</span>: [<span class="ident">i32</span>; <span class="number">3</span>],
-    ) <span class="op">-&gt;</span> <span class="ident">ElemRestriction</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ElemRestriction</span> {
         <span class="ident">ElemRestriction</span>::<span class="ident">create_strided</span>(<span class="self">self</span>, <span class="ident">nelem</span>, <span class="ident">elemsize</span>, <span class="ident">ncomp</span>, <span class="ident">lsize</span>, <span class="ident">strides</span>)
     }
 
@@ -1005,7 +1007,7 @@
         <span class="ident">grad1d</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
         <span class="ident">qref1d</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
         <span class="ident">qweight1d</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
-    ) <span class="op">-&gt;</span> <span class="ident">Basis</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Basis</span> {
         <span class="ident">Basis</span>::<span class="ident">create_tensor_H1</span>(
             <span class="self">self</span>, <span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P1d</span>, <span class="ident">Q1d</span>, <span class="ident">interp1d</span>, <span class="ident">grad1d</span>, <span class="ident">qref1d</span>, <span class="ident">qweight1d</span>,
         )
@@ -1035,7 +1037,7 @@
         <span class="ident">P</span>: <span class="ident">usize</span>,
         <span class="ident">Q</span>: <span class="ident">usize</span>,
         <span class="ident">qmode</span>: <span class="ident">QuadMode</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">Basis</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Basis</span> {
         <span class="ident">Basis</span>::<span class="ident">create_tensor_H1_Lagrange</span>(<span class="self">self</span>, <span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P</span>, <span class="ident">Q</span>, <span class="ident">qmode</span>)
     }
 
@@ -1085,7 +1087,7 @@
         <span class="ident">grad</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
         <span class="ident">qref</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
         <span class="ident">qweight</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
-    ) <span class="op">-&gt;</span> <span class="ident">Basis</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Basis</span> {
         <span class="ident">Basis</span>::<span class="ident">create_H1</span>(
             <span class="self">self</span>, <span class="ident">topo</span>, <span class="ident">ncomp</span>, <span class="ident">nnodes</span>, <span class="ident">nqpts</span>, <span class="ident">interp</span>, <span class="ident">grad</span>, <span class="ident">qref</span>, <span class="ident">qweight</span>,
         )
@@ -1123,7 +1125,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">vlength</span>: <span class="ident">i32</span>,
         <span class="ident">f</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">qfunction</span>::<span class="ident">QFunctionUserClosure</span><span class="op">&gt;</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">QFunction</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">QFunction</span> {
         <span class="ident">QFunction</span>::<span class="ident">create</span>(<span class="self">self</span>, <span class="ident">vlength</span>, <span class="ident">f</span>)
     }
 
@@ -1135,7 +1137,7 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let qf = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">q_function_interior_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">QFunctionByName</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">q_function_interior_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">QFunctionByName</span> {
         <span class="ident">QFunctionByName</span>::<span class="ident">create</span>(<span class="self">self</span>, <span class="ident">name</span>)
     }
 
@@ -1158,10 +1160,10 @@
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">operator</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">qf</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;&gt;</span>,
-        <span class="ident">dqf</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;&gt;</span>,
-        <span class="ident">dqfT</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;&gt;</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">Operator</span> {
+        <span class="ident">qf</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+        <span class="ident">dqf</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+        <span class="ident">dqfT</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">QFunctionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Operator</span> {
         <span class="ident">Operator</span>::<span class="ident">create</span>(<span class="self">self</span>, <span class="ident">qf</span>, <span class="ident">dqf</span>, <span class="ident">dqfT</span>)
     }
 
@@ -1172,7 +1174,7 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let op = ceed.composite_operator();</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">composite_operator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CompositeOperator</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">composite_operator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompositeOperator</span> {
         <span class="ident">CompositeOperator</span>::<span class="ident">create</span>(<span class="self">self</span>)
     }
 }
@@ -1246,7 +1248,7 @@
         <span class="kw">let</span> <span class="ident">array</span> <span class="op">=</span> <span class="ident">v</span>.<span class="ident">view</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sum</span> <span class="op">=</span> <span class="number">0.0</span>;
         <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">ndofs</span> {
-            <span class="ident">sum</span> <span class="op">+=</span> <span class="ident">array</span>[<span class="ident">i</span>];
+            <span class="ident">sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">array</span>[<span class="ident">i</span>];
         }
         <span class="macro">assert</span><span class="macro">!</span>(
             (<span class="ident">sum</span> <span class="op">-</span> <span class="number">2.0</span>).<span class="ident">abs</span>() <span class="op">&lt;</span> <span class="number">1e-15</span>,
