@@ -509,35 +509,35 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
-    <span class="doccomment">/// const q: usize = 6;</span>
-    <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, q, q, QuadMode::GaussLobatto);</span>
-    <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
+    <span class="doccomment">/// const Q: usize = 6;</span>
+    <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, Q, Q, QuadMode::GaussLobatto);</span>
+    <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, Q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let x_corners = ceed.vector_from_slice(&amp;[-1., 1.]);</span>
-    <span class="doccomment">/// let mut x_qpts = ceed.vector(q);</span>
-    <span class="doccomment">/// let mut x_nodes = ceed.vector(q);</span>
+    <span class="doccomment">/// let mut x_qpts = ceed.vector(Q);</span>
+    <span class="doccomment">/// let mut x_nodes = ceed.vector(Q);</span>
     <span class="doccomment">/// bx.apply(1, TransposeMode::NoTranspose, EvalMode::Interp,</span>
     <span class="doccomment">///          &amp;x_corners, &amp;mut x_nodes);</span>
     <span class="doccomment">/// bu.apply(1, TransposeMode::NoTranspose, EvalMode::Interp,</span>
     <span class="doccomment">///          &amp;x_nodes, &amp;mut x_qpts);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Create function x^3 + 1 on Gauss Lobatto points</span>
-    <span class="doccomment">/// let mut u_arr = [0.; q];</span>
+    <span class="doccomment">/// let mut u_arr = [0.; Q];</span>
     <span class="doccomment">/// let x_nodes_arr = x_nodes.view();</span>
-    <span class="doccomment">/// for i in 0..q {</span>
+    <span class="doccomment">/// for i in 0..Q {</span>
     <span class="doccomment">///   u_arr[i] = x_nodes_arr[i]*x_nodes_arr[i]*x_nodes_arr[i] + 1.;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let u = ceed.vector_from_slice(&amp;u_arr);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Map function to Gauss points</span>
-    <span class="doccomment">/// let mut v = ceed.vector(q);</span>
+    <span class="doccomment">/// let mut v = ceed.vector(Q);</span>
     <span class="doccomment">/// v.set_value(0.);</span>
     <span class="doccomment">/// bu.apply(1, TransposeMode::NoTranspose, EvalMode::Interp, &amp;u, &amp;mut v);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Verify results</span>
     <span class="doccomment">/// let v_arr = v.view();</span>
     <span class="doccomment">/// let x_qpts_arr = x_qpts.view();</span>
-    <span class="doccomment">/// for i in 0..q {</span>
+    <span class="doccomment">/// for i in 0..Q {</span>
     <span class="doccomment">///   let true_value = x_qpts_arr[i]*x_qpts_arr[i]*x_qpts_arr[i] + 1.;</span>
     <span class="doccomment">///   assert_eq!(v_arr[i], true_value, &quot;Incorrect basis application&quot;);</span>
     <span class="doccomment">/// }</span>

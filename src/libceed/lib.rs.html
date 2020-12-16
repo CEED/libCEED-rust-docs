@@ -629,6 +629,36 @@
 <span id="626">626</span>
 <span id="627">627</span>
 <span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
+<span id="644">644</span>
+<span id="645">645</span>
+<span id="646">646</span>
+<span id="647">647</span>
+<span id="648">648</span>
+<span id="649">649</span>
+<span id="650">650</span>
+<span id="651">651</span>
+<span id="652">652</span>
+<span id="653">653</span>
+<span id="654">654</span>
+<span id="655">655</span>
+<span id="656">656</span>
+<span id="657">657</span>
+<span id="658">658</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -651,11 +681,41 @@
 <span class="doccomment">//! This is the documentation for the high level libCEED Rust interface.</span>
 <span class="doccomment">//! See the full libCEED user manual [here](https://libceed.readthedocs.io).</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ## Installing</span>
+<span class="doccomment">//! ## Usage</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! First, libCEED needs to be built and `LD_LIBRARY_PATH` updated to contain</span>
-<span class="doccomment">//! the filepath to `libceed.so`. Then `cargo` commands may be used as usual in</span>
-<span class="doccomment">//! the `libCEED/rust` folder, such as `cargo build` and `cargo test`.</span>
+<span class="doccomment">//! To call libCEED from a Rust package, the following `Cargo.toml` can be used.</span>
+<span class="doccomment">//! ```toml</span>
+<span class="doccomment">//! [dependencies]</span>
+<span class="doccomment">//! libceed = { git = &quot;https://github.com/CEED/libCEED&quot;, branch = &quot;main&quot; }</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Supported features:</span>
+<span class="doccomment">//! * `static` (default): link to static libceed.a</span>
+<span class="doccomment">//! * `system`: use libceed from a system directory (otherwise, install from source)</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! extern crate libceed;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! fn main() {</span>
+<span class="doccomment">//!     let ceed = libceed::Ceed::init(&quot;/cpu/self/ref&quot;);</span>
+<span class="doccomment">//!     let xc = ceed.vector_from_slice(&amp;[0., 0.5, 1.0]);</span>
+<span class="doccomment">//!     let xs = xc.view();</span>
+<span class="doccomment">//!     assert_eq!(xs[..], [0., 0.5, 1.0]);</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Development</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! To develop libCEED, use `cargo build` in the `rust/` directory to install a</span>
+<span class="doccomment">//! local copy and build the bindings. If you need custom flags for the C</span>
+<span class="doccomment">//! project, we recommend using `make configure` to cache arguments. If you</span>
+<span class="doccomment">//! disable the `static` feature, then you&#39;ll need to set `LD_LIBRARY_PATH` for</span>
+<span class="doccomment">//! doctests to be able to find it. You can do this in `$CEED_DIR/lib` and set</span>
+<span class="doccomment">//! `PKG_CONFIG_PATH`.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Note: the `LD_LIBRARY_PATH` workarounds will become unnecessary if [this</span>
+<span class="doccomment">//! issue](https://github.com/rust-lang/cargo/issues/1592) is resolved -- it&#39;s</span>
+<span class="doccomment">//! currently closed, but the problem still exists.</span>
 
 <span class="comment">// -----------------------------------------------------------------------------</span>
 <span class="comment">// Exceptions</span>

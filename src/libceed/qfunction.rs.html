@@ -880,18 +880,18 @@
     <span class="doccomment">///   v[i] = u[i] * w[i];</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let U = ceed.vector_from_slice(&amp;u);</span>
-    <span class="doccomment">/// let W = ceed.vector_from_slice(&amp;w);</span>
-    <span class="doccomment">/// let mut V = ceed.vector(Q);</span>
-    <span class="doccomment">/// V.set_value(0.0);</span>
+    <span class="doccomment">/// let uu = ceed.vector_from_slice(&amp;u);</span>
+    <span class="doccomment">/// let ww = ceed.vector_from_slice(&amp;w);</span>
+    <span class="doccomment">/// let mut vv = ceed.vector(Q);</span>
+    <span class="doccomment">/// vv.set_value(0.0);</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   let input = vec![U, W];</span>
-    <span class="doccomment">///   let mut output = vec![V];</span>
+    <span class="doccomment">///   let input = vec![uu, ww];</span>
+    <span class="doccomment">///   let mut output = vec![vv];</span>
     <span class="doccomment">///   qf.apply(Q as i32, &amp;input, &amp;output);</span>
-    <span class="doccomment">///   V = output.remove(0);</span>
+    <span class="doccomment">///   vv = output.remove(0);</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let array = V.view();</span>
+    <span class="doccomment">/// let array = vv.view();</span>
     <span class="doccomment">/// for i in 0..Q {</span>
     <span class="doccomment">///   assert_eq!(array[i], v[i], &quot;Incorrect value in QFunction application&quot;);</span>
     <span class="doccomment">/// }</span>
@@ -1025,29 +1025,29 @@
     <span class="doccomment">///   v[i] = w[i] * u[i];</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let J = ceed.vector_from_slice(&amp;j);</span>
-    <span class="doccomment">/// let W = ceed.vector_from_slice(&amp;w);</span>
-    <span class="doccomment">/// let U = ceed.vector_from_slice(&amp;u);</span>
-    <span class="doccomment">/// let mut V = ceed.vector(Q);</span>
-    <span class="doccomment">/// V.set_value(0.0);</span>
+    <span class="doccomment">/// let jj = ceed.vector_from_slice(&amp;j);</span>
+    <span class="doccomment">/// let ww = ceed.vector_from_slice(&amp;w);</span>
+    <span class="doccomment">/// let uu = ceed.vector_from_slice(&amp;u);</span>
+    <span class="doccomment">/// let mut vv = ceed.vector(Q);</span>
+    <span class="doccomment">/// vv.set_value(0.0);</span>
     <span class="doccomment">/// let mut qdata = ceed.vector(Q);</span>
     <span class="doccomment">/// qdata.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   let mut input = vec![J, W];</span>
+    <span class="doccomment">///   let mut input = vec![jj, ww];</span>
     <span class="doccomment">///   let mut output = vec![qdata];</span>
     <span class="doccomment">///   qf_build.apply(Q as i32, &amp;input, &amp;output);</span>
     <span class="doccomment">///   qdata = output.remove(0);</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// {</span>
-    <span class="doccomment">///   let mut input = vec![qdata, U];</span>
-    <span class="doccomment">///   let mut output = vec![V];</span>
+    <span class="doccomment">///   let mut input = vec![qdata, uu];</span>
+    <span class="doccomment">///   let mut output = vec![vv];</span>
     <span class="doccomment">///   qf_mass.apply(Q as i32, &amp;input, &amp;output);</span>
-    <span class="doccomment">///   V = output.remove(0);</span>
+    <span class="doccomment">///   vv = output.remove(0);</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let array = V.view();</span>
+    <span class="doccomment">/// let array = vv.view();</span>
     <span class="doccomment">/// for i in 0..Q {</span>
     <span class="doccomment">///   assert_eq!(array[i], v[i], &quot;Incorrect value in QFunction application&quot;);</span>
     <span class="doccomment">/// }</span>
