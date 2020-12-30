@@ -770,8 +770,8 @@
 <span class="doccomment">/// Many Ceed interfaces take or return pointers to memory.  This enum is used to</span>
 <span class="doccomment">/// specify where the memory being provided or requested must reside.</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">MemType</span> {
-    <span class="ident">Host</span>,
-    <span class="ident">Device</span>,
+    <span class="ident">Host</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedMemType_CEED_MEM_HOST</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Device</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedMemType_CEED_MEM_DEVICE</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
@@ -779,54 +779,54 @@
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
 <span class="doccomment">/// Conveys ownership status of arrays passed to Ceed interfaces.</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">CopyMode</span> {
-    <span class="ident">CopyValues</span>,
-    <span class="ident">UsePointer</span>,
-    <span class="ident">OwnPointer</span>,
+    <span class="ident">CopyValues</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedCopyMode_CEED_COPY_VALUES</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">UsePointer</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedCopyMode_CEED_USE_POINTER</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">OwnPointer</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedCopyMode_CEED_OWN_POINTER</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="doccomment">/// Denotes type of vector norm to be computed</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">NormType</span> {
-    <span class="ident">One</span>,
-    <span class="ident">Two</span>,
-    <span class="ident">Max</span>,
+    <span class="ident">One</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedNormType_CEED_NORM_1</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Two</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedNormType_CEED_NORM_2</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Max</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedNormType_CEED_NORM_MAX</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="doccomment">/// Denotes whether a linear transformation or its transpose should be applied</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">TransposeMode</span> {
-    <span class="ident">NoTranspose</span>,
-    <span class="ident">Transpose</span>,
+    <span class="ident">NoTranspose</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedTransposeMode_CEED_NOTRANSPOSE</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Transpose</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedTransposeMode_CEED_TRANSPOSE</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="doccomment">/// Type of quadrature; also used for location of nodes</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">QuadMode</span> {
-    <span class="ident">Gauss</span>,
-    <span class="ident">GaussLobatto</span>,
+    <span class="ident">Gauss</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedQuadMode_CEED_GAUSS</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">GaussLobatto</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedQuadMode_CEED_GAUSS_LOBATTO</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="doccomment">/// Type of basis shape to create non-tensor H1 element basis</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ElemTopology</span> {
-    <span class="ident">Line</span>,
-    <span class="ident">Triangle</span>,
-    <span class="ident">Quad</span>,
-    <span class="ident">Tet</span>,
-    <span class="ident">Pyramid</span>,
-    <span class="ident">Prism</span>,
-    <span class="ident">Hex</span>,
+    <span class="ident">Line</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_LINE</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Triangle</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_TRIANGLE</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Quad</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_QUAD</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Tet</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_TET</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Pyramid</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_PYRAMID</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Prism</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_PRISM</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Hex</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology_CEED_HEX</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="doccomment">/// Basis evaluation mode</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">EvalMode</span> {
-    <span class="prelude-val">None</span>,
-    <span class="ident">Interp</span>,
-    <span class="ident">Grad</span>,
-    <span class="ident">Div</span>,
-    <span class="ident">Curl</span>,
-    <span class="ident">Weight</span>,
+    <span class="prelude-val">None</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode_CEED_EVAL_NONE</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Interp</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode_CEED_EVAL_INTERP</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Grad</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode_CEED_EVAL_GRAD</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Div</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode_CEED_EVAL_DIV</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Curl</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode_CEED_EVAL_CURL</span> <span class="kw">as</span> <span class="ident">isize</span>,
+    <span class="ident">Weight</span> <span class="op">=</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode_CEED_EVAL_WEIGHT</span> <span class="kw">as</span> <span class="ident">isize</span>,
 }
 
 <span class="comment">// -----------------------------------------------------------------------------</span>
