@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/elem_restriction.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>elem_restriction.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/elem_restriction.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>elem_restriction.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -429,6 +429,10 @@
 <span id="426">426</span>
 <span id="427">427</span>
 <span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -507,12 +511,12 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">/// println!(&quot;{}&quot;, r);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
@@ -599,16 +603,16 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let lvector = r.create_lvector();</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(lvector.length(), nelem+1, &quot;Incorrect Lvector size&quot;);</span>
+    <span class="doccomment">/// assert_eq!(lvector.length(), nelem + 1, &quot;Incorrect Lvector size&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_lvector</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vector</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr_lvector</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
@@ -623,16 +627,16 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let evector = r.create_evector();</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(evector.length(), nelem*2, &quot;Incorrect Evector size&quot;);</span>
+    <span class="doccomment">/// assert_eq!(evector.length(), nelem * 2, &quot;Incorrect Evector size&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_evector</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vector</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr_evector</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
@@ -647,17 +651,17 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let (lvector, evector) = r.create_vectors();</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(lvector.length(), nelem+1, &quot;Incorrect Lvector size&quot;);</span>
-    <span class="doccomment">/// assert_eq!(evector.length(), nelem*2, &quot;Incorrect Evector size&quot;);</span>
+    <span class="doccomment">/// assert_eq!(lvector.length(), nelem + 1, &quot;Incorrect Lvector size&quot;);</span>
+    <span class="doccomment">/// assert_eq!(evector.length(), nelem * 2, &quot;Incorrect Evector size&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_vectors</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">Vector</span>, <span class="ident">Vector</span>) {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr_lvector</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
@@ -682,12 +686,12 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[0., 1., 2., 3.]);</span>
     <span class="doccomment">/// let mut y = ceed.vector(nelem*2);</span>
@@ -695,10 +699,12 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// r.apply(TransposeMode::NoTranspose, &amp;x, &amp;mut y);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let array = y.view();</span>
-    <span class="doccomment">/// for i in 0..(nelem*2) {</span>
-    <span class="doccomment">///   assert_eq!(array[i], ((i+1)/2) as f64, &quot;Incorrect value in restricted vector&quot;);</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// y.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .enumerate()</span>
+    <span class="doccomment">///     .for_each(|(i, arr)| {</span>
+    <span class="doccomment">///         assert_eq!(*arr, ((i + 1) / 2) as f64, &quot;Incorrect value in restricted vector&quot;);</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tmode</span>: <span class="ident">TransposeMode</span>, <span class="ident">u</span>: <span class="kw-2">&amp;</span><span class="ident">Vector</span>, <span class="ident">ru</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
         <span class="kw">let</span> <span class="ident">tmode</span> <span class="op">=</span> <span class="ident">tmode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedTransposeMode</span>;
@@ -720,17 +726,17 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
     <span class="doccomment">/// let compstride = 1;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, compstride, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, compstride, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let c = r.get_comp_stride();</span>
+    <span class="doccomment">/// let c = r.comp_stride();</span>
     <span class="doccomment">/// assert_eq!(c, compstride as i32, &quot;Incorrect component stride&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_comp_stride</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">comp_stride</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">compstride</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestrictionGetCompStride</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">compstride</span>) };
         <span class="ident">compstride</span>
@@ -742,17 +748,17 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let n = r.get_num_elements();</span>
+    <span class="doccomment">/// let n = r.num_elements();</span>
     <span class="doccomment">/// assert_eq!(n, nelem as i32, &quot;Incorrect number of elements&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_num_elements</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_elements</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">numelem</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestrictionGetNumElements</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">numelem</span>) };
         <span class="ident">numelem</span>
@@ -765,17 +771,17 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
     <span class="doccomment">/// let elem_size = 2;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, elem_size, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, elem_size, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let e = r.get_elem_size();</span>
+    <span class="doccomment">/// let e = r.elem_size();</span>
     <span class="doccomment">/// assert_eq!(e, elem_size as i32, &quot;Incorrect element size&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_elem_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">elem_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">elemsize</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestrictionGetElementSize</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">elemsize</span>) };
         <span class="ident">elemsize</span>
@@ -787,17 +793,17 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let lsize = r.get_lvector_size();</span>
-    <span class="doccomment">/// assert_eq!(lsize, (nelem+1) as i32);</span>
+    <span class="doccomment">/// let lsize = r.lvector_size();</span>
+    <span class="doccomment">/// assert_eq!(lsize, (nelem + 1) as i32);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_lvector_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lvector_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lsize</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestrictionGetLVectorSize</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">lsize</span>) };
         <span class="ident">lsize</span>
@@ -810,17 +816,17 @@
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
     <span class="doccomment">/// let ncomp = 42;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 42, 1, ncomp*(nelem+1), MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 42, 1, ncomp * (nelem + 1), MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let n = r.get_num_components();</span>
+    <span class="doccomment">/// let n = r.num_components();</span>
     <span class="doccomment">/// assert_eq!(n, ncomp as i32, &quot;Incorrect number of components&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_num_components</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_components</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">numcomp</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestrictionGetNumComponents</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">numcomp</span>) };
         <span class="ident">numcomp</span>
@@ -832,27 +838,29 @@
     <span class="doccomment">/// # use libceed::prelude::*;</span>
     <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
     <span class="doccomment">/// let nelem = 3;</span>
-    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2*nelem];</span>
+    <span class="doccomment">/// let mut ind: Vec&lt;i32&gt; = vec![0; 2 * nelem];</span>
     <span class="doccomment">/// for i in 0..nelem {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(nelem, 2, 1, 1, nelem + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut mult = ceed.vector(nelem+1);</span>
+    <span class="doccomment">/// let mut mult = ceed.vector(nelem + 1);</span>
     <span class="doccomment">/// mult.set_value(0.0);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// r.get_multiplicity(&amp;mut mult);</span>
+    <span class="doccomment">/// r.multiplicity(&amp;mut mult);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let array = mult.view();</span>
-    <span class="doccomment">/// for i in 0..(nelem+1) {</span>
-    <span class="doccomment">///   assert_eq!(</span>
-    <span class="doccomment">///     if (i == 0 || i == nelem) { 1. } else { 2. },</span>
-    <span class="doccomment">///     array[i],</span>
-    <span class="doccomment">///     &quot;Incorrect multiplicity array&quot;);</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// mult.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .enumerate()</span>
+    <span class="doccomment">///     .for_each(|(i, arr)| {</span>
+    <span class="doccomment">///         assert_eq!(</span>
+    <span class="doccomment">///             if (i == 0 || i == nelem) { 1. } else { 2. },</span>
+    <span class="doccomment">///             *arr,</span>
+    <span class="doccomment">///             &quot;Incorrect multiplicity array&quot;);</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_multiplicity</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">mult</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">multiplicity</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">mult</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedElemRestrictionGetMultiplicity</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="ident">mult</span>.<span class="ident">ptr</span>) };
     }
 }

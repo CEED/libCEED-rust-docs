@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/operator.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>operator.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/operator.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>operator.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
@@ -1642,72 +1642,6 @@
 <span id="1639">1639</span>
 <span id="1640">1640</span>
 <span id="1641">1641</span>
-<span id="1642">1642</span>
-<span id="1643">1643</span>
-<span id="1644">1644</span>
-<span id="1645">1645</span>
-<span id="1646">1646</span>
-<span id="1647">1647</span>
-<span id="1648">1648</span>
-<span id="1649">1649</span>
-<span id="1650">1650</span>
-<span id="1651">1651</span>
-<span id="1652">1652</span>
-<span id="1653">1653</span>
-<span id="1654">1654</span>
-<span id="1655">1655</span>
-<span id="1656">1656</span>
-<span id="1657">1657</span>
-<span id="1658">1658</span>
-<span id="1659">1659</span>
-<span id="1660">1660</span>
-<span id="1661">1661</span>
-<span id="1662">1662</span>
-<span id="1663">1663</span>
-<span id="1664">1664</span>
-<span id="1665">1665</span>
-<span id="1666">1666</span>
-<span id="1667">1667</span>
-<span id="1668">1668</span>
-<span id="1669">1669</span>
-<span id="1670">1670</span>
-<span id="1671">1671</span>
-<span id="1672">1672</span>
-<span id="1673">1673</span>
-<span id="1674">1674</span>
-<span id="1675">1675</span>
-<span id="1676">1676</span>
-<span id="1677">1677</span>
-<span id="1678">1678</span>
-<span id="1679">1679</span>
-<span id="1680">1680</span>
-<span id="1681">1681</span>
-<span id="1682">1682</span>
-<span id="1683">1683</span>
-<span id="1684">1684</span>
-<span id="1685">1685</span>
-<span id="1686">1686</span>
-<span id="1687">1687</span>
-<span id="1688">1688</span>
-<span id="1689">1689</span>
-<span id="1690">1690</span>
-<span id="1691">1691</span>
-<span id="1692">1692</span>
-<span id="1693">1693</span>
-<span id="1694">1694</span>
-<span id="1695">1695</span>
-<span id="1696">1696</span>
-<span id="1697">1697</span>
-<span id="1698">1698</span>
-<span id="1699">1699</span>
-<span id="1700">1700</span>
-<span id="1701">1701</span>
-<span id="1702">1702</span>
-<span id="1703">1703</span>
-<span id="1704">1704</span>
-<span id="1705">1705</span>
-<span id="1706">1706</span>
-<span id="1707">1707</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -1780,26 +1714,26 @@
 <span class="doccomment">/// # use libceed::prelude::*;</span>
 <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
 <span class="doccomment">/// let qf = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-<span class="doccomment">/// let mut op = ceed.operator(&amp;qf, QFunctionOpt::None, QFunctionOpt::None);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// // Operator field arguments</span>
 <span class="doccomment">/// let ne = 3;</span>
 <span class="doccomment">/// let q = 4 as usize;</span>
-<span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+<span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
 <span class="doccomment">/// for i in 0..ne {</span>
-<span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-<span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+<span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+<span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
 <span class="doccomment">/// }</span>
-<span class="doccomment">/// let r = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;ind);</span>
+<span class="doccomment">/// let r = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;ind);</span>
 <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
 <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, 2, 1, q*ne, strides);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// // Operator fields</span>
-<span class="doccomment">/// op.set_field(&quot;dx&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
-<span class="doccomment">/// op.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;b, VectorOpt::None);</span>
-<span class="doccomment">/// op.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
+<span class="doccomment">/// let op = ceed.operator(&amp;qf, QFunctionOpt::None, QFunctionOpt::None)</span>
+<span class="doccomment">///     .field(&quot;dx&quot;, &amp;r, &amp;b, VectorOpt::Active)</span>
+<span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;b, VectorOpt::None)</span>
+<span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// println!(&quot;{}&quot;, op);</span>
 <span class="doccomment">/// ```</span>
@@ -1814,40 +1748,40 @@
 <span class="doccomment">/// ```</span>
 <span class="doccomment">/// # use libceed::prelude::*;</span>
 <span class="doccomment">/// # let ceed = libceed::Ceed::default_init();</span>
-<span class="doccomment">/// let mut op = ceed.composite_operator();</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// // Sub operator field arguments</span>
 <span class="doccomment">/// let ne = 3;</span>
 <span class="doccomment">/// let q = 4 as usize;</span>
-<span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+<span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
 <span class="doccomment">/// for i in 0..ne {</span>
-<span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-<span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+<span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+<span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
 <span class="doccomment">/// }</span>
-<span class="doccomment">/// let r = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;ind);</span>
+<span class="doccomment">/// let r = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;ind);</span>
 <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-<span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, 2, 1, q*ne, strides);</span>
+<span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, 2, 1, q * ne, strides);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// let qdata_mass = ceed.vector(q*ne);</span>
-<span class="doccomment">/// let qdata_diff = ceed.vector(q*ne);</span>
+<span class="doccomment">/// let qdata_mass = ceed.vector(q * ne);</span>
+<span class="doccomment">/// let qdata_diff = ceed.vector(q * ne);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-<span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-<span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
-<span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_mass);</span>
-<span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
+<span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+<span class="doccomment">///     .field(&quot;u&quot;, &amp;r, &amp;b, VectorOpt::Active)</span>
+<span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_mass)</span>
+<span class="doccomment">///     .field(&quot;v&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// op.add_sub_operator(&amp;op_mass);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let qf_diff = ceed.q_function_interior_by_name(&quot;Poisson1DApply&quot;);</span>
-<span class="doccomment">/// let mut op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None);</span>
-<span class="doccomment">/// op_diff.set_field(&quot;du&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
-<span class="doccomment">/// op_diff.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_diff);</span>
-<span class="doccomment">/// op_diff.set_field(&quot;dv&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
+<span class="doccomment">/// let op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None)</span>
+<span class="doccomment">///     .field(&quot;du&quot;, &amp;r, &amp;b, VectorOpt::Active)</span>
+<span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_diff)</span>
+<span class="doccomment">///     .field(&quot;dv&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// op.add_sub_operator(&amp;op_diff);</span>
+<span class="doccomment">/// let op = ceed.composite_operator()</span>
+<span class="doccomment">///     .sub_operator(&amp;op_mass)</span>
+<span class="doccomment">///     .sub_operator(&amp;op_diff);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// println!(&quot;{}&quot;, op);</span>
 <span class="doccomment">/// ```</span>
@@ -1966,63 +1900,57 @@
     <span class="doccomment">/// let ne = 4;</span>
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
     <span class="doccomment">/// let mut qdata = ceed.vector(ne*q);</span>
     <span class="doccomment">/// qdata.set_value(0.0);</span>
-    <span class="doccomment">/// let mut u = ceed.vector(ndofs);</span>
-    <span class="doccomment">/// u.set_value(1.0);</span>
+    <span class="doccomment">/// let u = ceed.vector_from_slice(&amp;vec![1.0; ndofs]);</span>
     <span class="doccomment">/// let mut v = ceed.vector(ndofs);</span>
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
-    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = i as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru = ceed.elem_restriction(ne, 3, 1, 1, ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">/// op_mass.apply(&amp;u, &amp;mut v);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">Vector</span>, <span class="ident">output</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
@@ -2040,62 +1968,56 @@
     <span class="doccomment">/// let ne = 4;</span>
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
     <span class="doccomment">/// let mut qdata = ceed.vector(ne*q);</span>
     <span class="doccomment">/// qdata.set_value(0.0);</span>
-    <span class="doccomment">/// let mut u = ceed.vector(ndofs);</span>
-    <span class="doccomment">/// u.set_value(1.0);</span>
+    <span class="doccomment">/// let u = ceed.vector_from_slice(&amp;vec![1.0; ndofs]);</span>
     <span class="doccomment">/// let mut v = ceed.vector(ndofs);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
     <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
-    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = i as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru = ceed.elem_restriction(ne, 3, 1, 1, ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// v.set_value(1.0);</span>
     <span class="doccomment">/// op_mass.apply_add(&amp;u, &amp;mut v);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v.view().iter().sum();</span>
     <span class="doccomment">/// assert!(</span>
     <span class="doccomment">///   (sum - (2.0 + ndofs as f64)).abs() &lt; 1e-15,</span>
     <span class="doccomment">///   &quot;Incorrect interval length computed and added&quot;</span>
@@ -2126,25 +2048,26 @@
     <span class="doccomment">/// // Operator field arguments</span>
     <span class="doccomment">/// let ne = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut ind : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   ind[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   ind[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   ind[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let r = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;ind);</span>
+    <span class="doccomment">/// let r = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;ind);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Operator field</span>
-    <span class="doccomment">/// op.set_field(&quot;dx&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
+    <span class="doccomment">/// op = op.field(&quot;dx&quot;, &amp;r, &amp;b, VectorOpt::Active);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_field</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_mut</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">field</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span>(
+        <span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">fieldname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">r</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ElemRestrictionOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="ident">b</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">BasisOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="ident">v</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">VectorOpt</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    ) {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">fieldname</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">fieldname</span>).<span class="ident">expect</span>(<span class="string">&quot;CString::new failed&quot;</span>);
         <span class="kw">let</span> <span class="ident">fieldname</span> <span class="op">=</span> <span class="ident">fieldname</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">i8</span>;
         <span class="kw">unsafe</span> {
@@ -2156,6 +2079,7 @@
                 <span class="ident">v</span>.<span class="ident">into</span>().<span class="ident">to_raw</span>(),
             )
         };
+        <span class="self">self</span>
     }
 
     <span class="doccomment">/// Assemble the diagonal of a square linear Operator</span>
@@ -2174,7 +2098,7 @@
     <span class="doccomment">/// let ne = 4;</span>
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
@@ -2188,39 +2112,38 @@
     <span class="doccomment">/// // Restrictions</span>
     <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
     <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = (2*i) as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (2*i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (2*i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = (2 * i) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (2 * i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (2 * i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru = ceed.elem_restriction(ne, p, 1, 1, ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Diagonal</span>
     <span class="doccomment">/// let mut diag = ceed.vector(ndofs);</span>
@@ -2246,14 +2169,15 @@
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let diag_array = diag.view();</span>
-    <span class="doccomment">/// let true_array = true_diag.view();</span>
-    <span class="doccomment">/// for i in 0..ndofs {</span>
-    <span class="doccomment">///   assert!(</span>
-    <span class="doccomment">///     (diag_array[i] - true_array[i]).abs() &lt; 1e-15,</span>
-    <span class="doccomment">///     &quot;Diagonal entry incorrect&quot;</span>
-    <span class="doccomment">///   );</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// diag.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .zip(true_diag.view().iter())</span>
+    <span class="doccomment">///     .for_each(|(computed, actual)| {</span>
+    <span class="doccomment">///         assert!(</span>
+    <span class="doccomment">///             (*computed - *actual).abs() &lt; 1e-15,</span>
+    <span class="doccomment">///             &quot;Diagonal entry incorrect&quot;</span>
+    <span class="doccomment">///         );</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linear_assemble_diagonal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">assembled</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
         <span class="self">self</span>.<span class="ident">op_core</span>.<span class="ident">linear_assemble_diagonal</span>(<span class="ident">assembled</span>)
@@ -2276,7 +2200,7 @@
     <span class="doccomment">/// let ne = 4;</span>
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
@@ -2288,41 +2212,40 @@
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
-    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = (2*i) as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (2*i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (2*i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = (2 * i) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (2 * i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (2 * i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru = ceed.elem_restriction(ne, p, 1, 1, ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Diagonal</span>
     <span class="doccomment">/// let mut diag = ceed.vector(ndofs);</span>
@@ -2348,14 +2271,15 @@
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let diag_array = diag.view();</span>
-    <span class="doccomment">/// let true_array = true_diag.view();</span>
-    <span class="doccomment">/// for i in 0..ndofs {</span>
-    <span class="doccomment">///   assert!(</span>
-    <span class="doccomment">///     (diag_array[i] - true_array[i]).abs() &lt; 1e-15,</span>
-    <span class="doccomment">///     &quot;Diagonal entry incorrect&quot;</span>
-    <span class="doccomment">///   );</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// diag.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .zip(true_diag.view().iter())</span>
+    <span class="doccomment">///     .for_each(|(computed, actual)| {</span>
+    <span class="doccomment">///         assert!(</span>
+    <span class="doccomment">///             (*computed - *actual).abs() &lt; 1e-15,</span>
+    <span class="doccomment">///             &quot;Diagonal entry incorrect&quot;</span>
+    <span class="doccomment">///         );</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linear_assemble_add_diagonal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">assembled</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
         <span class="self">self</span>.<span class="ident">op_core</span>.<span class="ident">linear_assemble_add_diagonal</span>(<span class="ident">assembled</span>)
@@ -2384,7 +2308,7 @@
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
     <span class="doccomment">/// let ncomp = 2;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
@@ -2398,32 +2322,31 @@
     <span class="doccomment">/// // Restrictions</span>
     <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
-    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
+    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = (2*i) as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (2*i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (2*i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = (2 * i) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (2 * i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (2 * i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let ru = ceed.elem_restriction(ne, p, ncomp, ndofs, ncomp*ndofs, MemType::Host, &amp;indu);</span>
+    <span class="doccomment">/// let ru = ceed.elem_restriction(ne, p, ncomp, ndofs, ncomp * ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, ncomp, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let mut mass_2_comp = |</span>
@@ -2436,37 +2359,37 @@
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   for i in 0..q {</span>
-    <span class="doccomment">///     v[i + 0*q] = u[i + 1*q] * qdata[i];</span>
-    <span class="doccomment">///     v[i + 1*q] = u[i + 0*q] * qdata[i];</span>
+    <span class="doccomment">///     v[i + 0 * q] = u[i + 1 * q] * qdata[i];</span>
+    <span class="doccomment">///     v[i + 1 * q] = u[i + 0 * q] * qdata[i];</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Return clean error code</span>
     <span class="doccomment">///   0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut qf_mass = ceed.q_function_interior(1, Box::new(mass_2_comp));</span>
-    <span class="doccomment">/// qf_mass.add_input(&quot;u&quot;, 2, EvalMode::Interp);</span>
-    <span class="doccomment">/// qf_mass.add_input(&quot;qdata&quot;, 1, EvalMode::None);</span>
-    <span class="doccomment">/// qf_mass.add_output(&quot;v&quot;, 2, EvalMode::Interp);</span>
+    <span class="doccomment">/// let qf_mass = ceed.q_function_interior(1, Box::new(mass_2_comp))</span>
+    <span class="doccomment">///     .input(&quot;u&quot;, 2, EvalMode::Interp)</span>
+    <span class="doccomment">///     .input(&quot;qdata&quot;, 1, EvalMode::None)</span>
+    <span class="doccomment">///     .output(&quot;v&quot;, 2, EvalMode::Interp);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Diagonal</span>
-    <span class="doccomment">/// let mut diag = ceed.vector(ncomp*ncomp*ndofs);</span>
+    <span class="doccomment">/// let mut diag = ceed.vector(ncomp * ncomp * ndofs);</span>
     <span class="doccomment">/// diag.set_value(0.0);</span>
     <span class="doccomment">/// op_mass.linear_assemble_point_block_diagonal(&amp;mut diag);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Manual diagonal computation</span>
-    <span class="doccomment">/// let mut true_diag = ceed.vector(ncomp*ncomp*ndofs);</span>
+    <span class="doccomment">/// let mut true_diag = ceed.vector(ncomp * ncomp * ndofs);</span>
     <span class="doccomment">/// for i in 0..ndofs {</span>
     <span class="doccomment">///   for j in 0..ncomp {</span>
     <span class="doccomment">///     u.set_value(0.0);</span>
     <span class="doccomment">///     {</span>
     <span class="doccomment">///       let mut u_array = u.view_mut();</span>
-    <span class="doccomment">///       u_array[i + j*ndofs] = 1.;</span>
+    <span class="doccomment">///       u_array[i + j * ndofs] = 1.;</span>
     <span class="doccomment">///     }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///     op_mass.apply(&amp;u, &amp;mut v);</span>
@@ -2475,21 +2398,22 @@
     <span class="doccomment">///       let v_array = v.view_mut();</span>
     <span class="doccomment">///       let mut true_array = true_diag.view_mut();</span>
     <span class="doccomment">///       for k in 0..ncomp {</span>
-    <span class="doccomment">///         true_array[i*ncomp*ncomp + k*ncomp + j] = v_array[i + k*ndofs];</span>
+    <span class="doccomment">///         true_array[i * ncomp * ncomp + k * ncomp + j] = v_array[i + k * ndofs];</span>
     <span class="doccomment">///       }</span>
     <span class="doccomment">///     }</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let diag_array = diag.view();</span>
-    <span class="doccomment">/// let true_array = true_diag.view();</span>
-    <span class="doccomment">/// for i in 0..ncomp*ncomp*ndofs {</span>
-    <span class="doccomment">///   assert!(</span>
-    <span class="doccomment">///     (diag_array[i] - true_array[i]).abs() &lt; 1e-15,</span>
-    <span class="doccomment">///     &quot;Diagonal entry incorrect&quot;</span>
-    <span class="doccomment">///   );</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// diag.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .zip(true_diag.view().iter())</span>
+    <span class="doccomment">///     .for_each(|(computed, actual)| {</span>
+    <span class="doccomment">///         assert!(</span>
+    <span class="doccomment">///             (*computed - *actual).abs() &lt; 1e-15,</span>
+    <span class="doccomment">///             &quot;Diagonal entry incorrect&quot;</span>
+    <span class="doccomment">///         );</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linear_assemble_point_block_diagonal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">assembled</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
         <span class="self">self</span>.<span class="ident">op_core</span>.<span class="ident">linear_assemble_point_block_diagonal</span>(<span class="ident">assembled</span>)
@@ -2518,7 +2442,7 @@
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
     <span class="doccomment">/// let ncomp = 2;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
@@ -2530,34 +2454,33 @@
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
-    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = (2*i) as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (2*i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (2*i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = (2 * i) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (2 * i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (2 * i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let ru = ceed.elem_restriction(ne, p, ncomp, ndofs, ncomp*ndofs, MemType::Host, &amp;indu);</span>
+    <span class="doccomment">/// let ru = ceed.elem_restriction(ne, p, ncomp, ndofs, ncomp * ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, ncomp, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let mut mass_2_comp = |</span>
@@ -2570,23 +2493,23 @@
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Iterate over quadrature points</span>
     <span class="doccomment">///   for i in 0..q {</span>
-    <span class="doccomment">///     v[i + 0*q] = u[i + 1*q] * qdata[i];</span>
-    <span class="doccomment">///     v[i + 1*q] = u[i + 0*q] * qdata[i];</span>
+    <span class="doccomment">///     v[i + 0 * q] = u[i + 1 * q] * qdata[i];</span>
+    <span class="doccomment">///     v[i + 1 * q] = u[i + 0 * q] * qdata[i];</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///   // Return clean error code</span>
     <span class="doccomment">///   0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut qf_mass = ceed.q_function_interior(1, Box::new(mass_2_comp));</span>
-    <span class="doccomment">/// qf_mass.add_input(&quot;u&quot;, 2, EvalMode::Interp);</span>
-    <span class="doccomment">/// qf_mass.add_input(&quot;qdata&quot;, 1, EvalMode::None);</span>
-    <span class="doccomment">/// qf_mass.add_output(&quot;v&quot;, 2, EvalMode::Interp);</span>
+    <span class="doccomment">/// let qf_mass = ceed.q_function_interior(1, Box::new(mass_2_comp))</span>
+    <span class="doccomment">///     .input(&quot;u&quot;, 2, EvalMode::Interp)</span>
+    <span class="doccomment">///     .input(&quot;qdata&quot;, 1, EvalMode::None)</span>
+    <span class="doccomment">///     .output(&quot;v&quot;, 2, EvalMode::Interp);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Diagonal</span>
     <span class="doccomment">/// let mut diag = ceed.vector(ncomp*ncomp*ndofs);</span>
@@ -2616,14 +2539,15 @@
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let diag_array = diag.view();</span>
-    <span class="doccomment">/// let true_array = true_diag.view();</span>
-    <span class="doccomment">/// for i in 0..ncomp*ncomp*ndofs {</span>
-    <span class="doccomment">///   assert!(</span>
-    <span class="doccomment">///     (diag_array[i] - 1.0 - true_array[i]).abs() &lt; 1e-15,</span>
-    <span class="doccomment">///     &quot;Diagonal entry incorrect&quot;</span>
-    <span class="doccomment">///   );</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// diag.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .zip(true_diag.view().iter())</span>
+    <span class="doccomment">///     .for_each(|(computed, actual)| {</span>
+    <span class="doccomment">///         assert!(</span>
+    <span class="doccomment">///             (*computed -  1.0 - *actual).abs() &lt; 1e-15,</span>
+    <span class="doccomment">///             &quot;Diagonal entry incorrect&quot;</span>
+    <span class="doccomment">///         );</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linear_assemble_add_point_block_diagonal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">assembled</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
         <span class="self">self</span>.<span class="ident">op_core</span>
@@ -2645,13 +2569,13 @@
     <span class="doccomment">/// let p_coarse = 3;</span>
     <span class="doccomment">/// let p_fine = 5;</span>
     <span class="doccomment">/// let q = 6;</span>
-    <span class="doccomment">/// let ndofs_coarse = p_coarse*ne-ne+1;</span>
-    <span class="doccomment">/// let ndofs_fine = p_fine*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs_coarse = p_coarse * ne - ne + 1;</span>
+    <span class="doccomment">/// let ndofs_fine = p_fine * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
-    <span class="doccomment">/// let x_array = (0..ne+1).map(|i| 2.0 * i as f64 / ne as f64 - 1.0).collect::&lt;Vec&lt;f64&gt;&gt;();</span>
+    <span class="doccomment">/// let x_array = (0..ne + 1).map(|i| 2.0 * i as f64 / ne as f64 - 1.0).collect::&lt;Vec&lt;f64&gt;&gt;();</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;x_array);</span>
-    <span class="doccomment">/// let mut qdata = ceed.vector(ne*q);</span>
+    <span class="doccomment">/// let mut qdata = ceed.vector(ne * q);</span>
     <span class="doccomment">/// qdata.set_value(0.0);</span>
     <span class="doccomment">/// let mut u_coarse = ceed.vector(ndofs_coarse);</span>
     <span class="doccomment">/// u_coarse.set_value(1.0);</span>
@@ -2666,27 +2590,27 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indu_coarse : Vec&lt;i32&gt; = vec![0; p_coarse*ne];</span>
+    <span class="doccomment">/// let mut indu_coarse : Vec&lt;i32&gt; = vec![0; p_coarse * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
     <span class="doccomment">///   for j in 0..p_coarse {</span>
-    <span class="doccomment">///     indu_coarse[p_coarse*i+j] = (i+j) as i32;</span>
+    <span class="doccomment">///     indu_coarse[p_coarse * i + j] = (i + j) as i32;</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru_coarse = ceed.elem_restriction(ne, p_coarse, 1, 1, ndofs_coarse, MemType::Host, &amp;indu_coarse);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indu_fine : Vec&lt;i32&gt; = vec![0; p_fine*ne];</span>
+    <span class="doccomment">/// let mut indu_fine : Vec&lt;i32&gt; = vec![0; p_fine * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
     <span class="doccomment">///   for j in 0..p_fine {</span>
-    <span class="doccomment">///     indu_fine[p_fine*i+j] = (i+j) as i32;</span>
+    <span class="doccomment">///     indu_fine[p_fine * i + j] = (i + j) as i32;</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru_fine = ceed.elem_restriction(ne, p_fine, 1, 1, ndofs_fine, MemType::Host, &amp;indu_fine);</span>
@@ -2696,21 +2620,20 @@
     <span class="doccomment">/// let bu_coarse = ceed.basis_tensor_H1_Lagrange(1, 1, p_coarse, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu_fine = ceed.basis_tensor_H1_Lagrange(1, 1, p_fine, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass_fine = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;u&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;v&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass_fine = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Multigrid setup</span>
     <span class="doccomment">/// let (op_mass_coarse, op_prolong, op_restrict) =</span>
@@ -2721,12 +2644,7 @@
     <span class="doccomment">/// op_mass_coarse.apply(&amp;u_coarse, &amp;mut v_coarse);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_coarse.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_coarse {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// drop(array);</span>
+    <span class="doccomment">/// let sum: f64 = v_coarse.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Prolong</span>
@@ -2736,22 +2654,14 @@
     <span class="doccomment">/// op_mass_fine.apply(&amp;u_fine, &amp;mut v_fine);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_fine.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_fine {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v_fine.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrict</span>
     <span class="doccomment">/// op_restrict.apply(&amp;v_fine, &amp;mut v_coarse);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_coarse.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_coarse {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v_coarse.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_multigrid_level</span>(
@@ -2796,11 +2706,11 @@
     <span class="doccomment">/// let p_coarse = 3;</span>
     <span class="doccomment">/// let p_fine = 5;</span>
     <span class="doccomment">/// let q = 6;</span>
-    <span class="doccomment">/// let ndofs_coarse = p_coarse*ne-ne+1;</span>
-    <span class="doccomment">/// let ndofs_fine = p_fine*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs_coarse = p_coarse * ne - ne + 1;</span>
+    <span class="doccomment">/// let ndofs_fine = p_fine * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
-    <span class="doccomment">/// let x_array = (0..ne+1).map(|i| 2.0 * i as f64 / ne as f64 - 1.0).collect::&lt;Vec&lt;f64&gt;&gt;();</span>
+    <span class="doccomment">/// let x_array = (0..ne + 1).map(|i| 2.0 * i as f64 / ne as f64 - 1.0).collect::&lt;Vec&lt;f64&gt;&gt;();</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;x_array);</span>
     <span class="doccomment">/// let mut qdata = ceed.vector(ne*q);</span>
     <span class="doccomment">/// qdata.set_value(0.0);</span>
@@ -2817,27 +2727,27 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indu_coarse : Vec&lt;i32&gt; = vec![0; p_coarse*ne];</span>
+    <span class="doccomment">/// let mut indu_coarse : Vec&lt;i32&gt; = vec![0; p_coarse * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
     <span class="doccomment">///   for j in 0..p_coarse {</span>
-    <span class="doccomment">///     indu_coarse[p_coarse*i+j] = (i+j) as i32;</span>
+    <span class="doccomment">///     indu_coarse[p_coarse * i + j] = (i + j) as i32;</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru_coarse = ceed.elem_restriction(ne, p_coarse, 1, 1, ndofs_coarse, MemType::Host, &amp;indu_coarse);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indu_fine : Vec&lt;i32&gt; = vec![0; p_fine*ne];</span>
+    <span class="doccomment">/// let mut indu_fine : Vec&lt;i32&gt; = vec![0; p_fine * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
     <span class="doccomment">///   for j in 0..p_fine {</span>
-    <span class="doccomment">///     indu_fine[p_fine*i+j] = (i+j) as i32;</span>
+    <span class="doccomment">///     indu_fine[p_fine * i + j] = (i + j) as i32;</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru_fine = ceed.elem_restriction(ne, p_fine, 1, 1, ndofs_fine, MemType::Host, &amp;indu_fine);</span>
@@ -2847,24 +2757,23 @@
     <span class="doccomment">/// let bu_coarse = ceed.basis_tensor_H1_Lagrange(1, 1, p_coarse, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu_fine = ceed.basis_tensor_H1_Lagrange(1, 1, p_fine, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass_fine = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;u&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;v&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass_fine = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Multigrid setup</span>
-    <span class="doccomment">/// let mut interp_c_to_f : Vec&lt;f64&gt; = vec![0.; p_coarse*p_fine];</span>
+    <span class="doccomment">/// let mut interp_c_to_f : Vec&lt;f64&gt; = vec![0.; p_coarse * p_fine];</span>
     <span class="doccomment">/// {</span>
     <span class="doccomment">///   let mut coarse = ceed.vector(p_coarse);</span>
     <span class="doccomment">///   let mut fine = ceed.vector(p_fine);</span>
@@ -2879,7 +2788,7 @@
     <span class="doccomment">///                        &amp;coarse, &amp;mut fine);</span>
     <span class="doccomment">///     let array = fine.view();</span>
     <span class="doccomment">///     for j in 0..p_fine {</span>
-    <span class="doccomment">///       interp_c_to_f[j*p_coarse + i] = array[j];</span>
+    <span class="doccomment">///       interp_c_to_f[j * p_coarse + i] = array[j];</span>
     <span class="doccomment">///     }</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
@@ -2891,12 +2800,7 @@
     <span class="doccomment">/// op_mass_coarse.apply(&amp;u_coarse, &amp;mut v_coarse);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_coarse.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_coarse {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// drop(array);</span>
+    <span class="doccomment">/// let sum: f64 = v_coarse.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Prolong</span>
@@ -2906,22 +2810,14 @@
     <span class="doccomment">/// op_mass_fine.apply(&amp;u_fine, &amp;mut v_fine);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_fine.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_fine {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v_fine.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrict</span>
     <span class="doccomment">/// op_restrict.apply(&amp;v_fine, &amp;mut v_coarse);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_coarse.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_coarse {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v_coarse.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_multigrid_level_tensor_H1</span>(
@@ -2968,11 +2864,11 @@
     <span class="doccomment">/// let p_coarse = 3;</span>
     <span class="doccomment">/// let p_fine = 5;</span>
     <span class="doccomment">/// let q = 6;</span>
-    <span class="doccomment">/// let ndofs_coarse = p_coarse*ne-ne+1;</span>
-    <span class="doccomment">/// let ndofs_fine = p_fine*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs_coarse = p_coarse * ne - ne + 1;</span>
+    <span class="doccomment">/// let ndofs_fine = p_fine * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
-    <span class="doccomment">/// let x_array = (0..ne+1).map(|i| 2.0 * i as f64 / ne as f64 - 1.0).collect::&lt;Vec&lt;f64&gt;&gt;();</span>
+    <span class="doccomment">/// let x_array = (0..ne + 1).map(|i| 2.0 * i as f64 / ne as f64 - 1.0).collect::&lt;Vec&lt;f64&gt;&gt;();</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;x_array);</span>
     <span class="doccomment">/// let mut qdata = ceed.vector(ne*q);</span>
     <span class="doccomment">/// qdata.set_value(0.0);</span>
@@ -2989,27 +2885,27 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indu_coarse : Vec&lt;i32&gt; = vec![0; p_coarse*ne];</span>
+    <span class="doccomment">/// let mut indu_coarse : Vec&lt;i32&gt; = vec![0; p_coarse * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
     <span class="doccomment">///   for j in 0..p_coarse {</span>
-    <span class="doccomment">///     indu_coarse[p_coarse*i+j] = (i+j) as i32;</span>
+    <span class="doccomment">///     indu_coarse[p_coarse * i + j] = (i + j) as i32;</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru_coarse = ceed.elem_restriction(ne, p_coarse, 1, 1, ndofs_coarse, MemType::Host, &amp;indu_coarse);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut indu_fine : Vec&lt;i32&gt; = vec![0; p_fine*ne];</span>
+    <span class="doccomment">/// let mut indu_fine : Vec&lt;i32&gt; = vec![0; p_fine * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
     <span class="doccomment">///   for j in 0..p_fine {</span>
-    <span class="doccomment">///     indu_fine[p_fine*i+j] = (i+j) as i32;</span>
+    <span class="doccomment">///     indu_fine[p_fine * i + j] = (i + j) as i32;</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru_fine = ceed.elem_restriction(ne, p_fine, 1, 1, ndofs_fine, MemType::Host, &amp;indu_fine);</span>
@@ -3019,21 +2915,20 @@
     <span class="doccomment">/// let bu_coarse = ceed.basis_tensor_H1_Lagrange(1, 1, p_coarse, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu_fine = ceed.basis_tensor_H1_Lagrange(1, 1, p_fine, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operator</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build = ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build.apply(&amp;x, &amp;mut qdata);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Mass operator</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass_fine = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;u&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata);</span>
-    <span class="doccomment">/// op_mass_fine.set_field(&quot;v&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_mass_fine = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru_fine, &amp;bu_fine, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Multigrid setup</span>
     <span class="doccomment">/// let mut interp_c_to_f : Vec&lt;f64&gt; = vec![0.; p_coarse*p_fine];</span>
@@ -3051,7 +2946,7 @@
     <span class="doccomment">///                        &amp;coarse, &amp;mut fine);</span>
     <span class="doccomment">///     let array = fine.view();</span>
     <span class="doccomment">///     for j in 0..p_fine {</span>
-    <span class="doccomment">///       interp_c_to_f[j*p_coarse + i] = array[j];</span>
+    <span class="doccomment">///       interp_c_to_f[j * p_coarse + i] = array[j];</span>
     <span class="doccomment">///     }</span>
     <span class="doccomment">///   }</span>
     <span class="doccomment">/// }</span>
@@ -3063,12 +2958,7 @@
     <span class="doccomment">/// op_mass_coarse.apply(&amp;u_coarse, &amp;mut v_coarse);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_coarse.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_coarse {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// drop(array);</span>
+    <span class="doccomment">/// let sum: f64 = v_coarse.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Prolong</span>
@@ -3078,22 +2968,14 @@
     <span class="doccomment">/// op_mass_fine.apply(&amp;u_fine, &amp;mut v_fine);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_fine.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_fine {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v_fine.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrict</span>
     <span class="doccomment">/// op_restrict.apply(&amp;v_fine, &amp;mut v_coarse);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v_coarse.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs_coarse {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v_coarse.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_multigrid_level_H1</span>(
@@ -3149,13 +3031,13 @@
     <span class="doccomment">/// let ne = 4;</span>
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
-    <span class="doccomment">/// let mut qdata_mass = ceed.vector(ne*q);</span>
+    <span class="doccomment">/// let mut qdata_mass = ceed.vector(ne * q);</span>
     <span class="doccomment">/// qdata_mass.set_value(0.0);</span>
-    <span class="doccomment">/// let mut qdata_diff = ceed.vector(ne*q);</span>
+    <span class="doccomment">/// let mut qdata_diff = ceed.vector(ne * q);</span>
     <span class="doccomment">/// qdata_diff.set_value(0.0);</span>
     <span class="doccomment">/// let mut u = ceed.vector(ndofs);</span>
     <span class="doccomment">/// u.set_value(1.0);</span>
@@ -3163,71 +3045,63 @@
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
     <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = i as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru = ceed.elem_restriction(ne, 3, 1, 1, ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operators</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build_mass = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build_mass = ceed.operator(&amp;qf_build_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build_mass.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build_mass.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build_mass.apply(&amp;x, &amp;mut qdata_mass);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata_mass);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_build_diff = ceed.q_function_interior_by_name(&quot;Poisson1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build_diff = ceed.operator(&amp;qf_build_diff, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build_diff.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build_diff.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build_diff.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build_diff.apply(&amp;x, &amp;mut qdata_diff);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build_diff, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata_diff);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Application operator</span>
-    <span class="doccomment">/// let mut op_composite = ceed.composite_operator();</span>
-    <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_mass);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_composite.add_sub_operator(&amp;op_mass);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_mass)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_diff = ceed.q_function_interior_by_name(&quot;Poisson1DApply&quot;);</span>
-    <span class="doccomment">/// let mut op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_diff.set_field(&quot;du&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_diff.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_diff);</span>
-    <span class="doccomment">/// op_diff.set_field(&quot;dv&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;du&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_diff)</span>
+    <span class="doccomment">///     .field(&quot;dv&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// op_composite.add_sub_operator(&amp;op_diff);</span>
+    <span class="doccomment">/// let op_composite = ceed.composite_operator()</span>
+    <span class="doccomment">///     .sub_operator(&amp;op_mass)</span>
+    <span class="doccomment">///     .sub_operator(&amp;op_diff);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">/// op_composite.apply(&amp;u, &amp;mut v);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - 2.0).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">Vector</span>, <span class="ident">output</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
@@ -3245,13 +3119,13 @@
     <span class="doccomment">/// let ne = 4;</span>
     <span class="doccomment">/// let p = 3;</span>
     <span class="doccomment">/// let q = 4;</span>
-    <span class="doccomment">/// let ndofs = p*ne-ne+1;</span>
+    <span class="doccomment">/// let ndofs = p * ne - ne + 1;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Vectors</span>
     <span class="doccomment">/// let x = ceed.vector_from_slice(&amp;[-1., -0.5, 0.0, 0.5, 1.0]);</span>
-    <span class="doccomment">/// let mut qdata_mass = ceed.vector(ne*q);</span>
+    <span class="doccomment">/// let mut qdata_mass = ceed.vector(ne * q);</span>
     <span class="doccomment">/// qdata_mass.set_value(0.0);</span>
-    <span class="doccomment">/// let mut qdata_diff = ceed.vector(ne*q);</span>
+    <span class="doccomment">/// let mut qdata_diff = ceed.vector(ne * q);</span>
     <span class="doccomment">/// qdata_diff.set_value(0.0);</span>
     <span class="doccomment">/// let mut u = ceed.vector(ndofs);</span>
     <span class="doccomment">/// u.set_value(1.0);</span>
@@ -3259,71 +3133,63 @@
     <span class="doccomment">/// v.set_value(0.0);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Restrictions</span>
-    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2*ne];</span>
+    <span class="doccomment">/// let mut indx : Vec&lt;i32&gt; = vec![0; 2 * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indx[2*i+0] = i as i32;</span>
-    <span class="doccomment">///   indx[2*i+1] = (i+1) as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indx[2 * i + 1] = (i + 1) as i32;</span>
     <span class="doccomment">/// }</span>
-    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne+1, MemType::Host, &amp;indx);</span>
-    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p*ne];</span>
+    <span class="doccomment">/// let rx = ceed.elem_restriction(ne, 2, 1, 1, ne + 1, MemType::Host, &amp;indx);</span>
+    <span class="doccomment">/// let mut indu : Vec&lt;i32&gt; = vec![0; p * ne];</span>
     <span class="doccomment">/// for i in 0..ne {</span>
-    <span class="doccomment">///   indu[p*i+0] = i as i32;</span>
-    <span class="doccomment">///   indu[p*i+1] = (i+1) as i32;</span>
-    <span class="doccomment">///   indu[p*i+2] = (i+2) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 0] = i as i32;</span>
+    <span class="doccomment">///   indu[p * i + 1] = (i + 1) as i32;</span>
+    <span class="doccomment">///   indu[p * i + 2] = (i + 2) as i32;</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// let ru = ceed.elem_restriction(ne, 3, 1, 1, ndofs, MemType::Host, &amp;indu);</span>
     <span class="doccomment">/// let strides : [i32; 3] = [1, q as i32, q as i32];</span>
-    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q*ne, strides);</span>
+    <span class="doccomment">/// let rq = ceed.strided_elem_restriction(ne, q, 1, q * ne, strides);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Bases</span>
     <span class="doccomment">/// let bx = ceed.basis_tensor_H1_Lagrange(1, 1, 2, q, QuadMode::Gauss);</span>
     <span class="doccomment">/// let bu = ceed.basis_tensor_H1_Lagrange(1, 1, p, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // Set up operators</span>
+    <span class="doccomment">/// // Build quadrature data</span>
     <span class="doccomment">/// let qf_build_mass = ceed.q_function_interior_by_name(&quot;Mass1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build_mass = ceed.operator(&amp;qf_build_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build_mass.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build_mass.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build_mass.apply(&amp;x, &amp;mut qdata_mass);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata_mass);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_build_diff = ceed.q_function_interior_by_name(&quot;Poisson1DBuild&quot;);</span>
-    <span class="doccomment">/// let mut op_build_diff = ceed.operator(&amp;qf_build_diff, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_build_diff.set_field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_build_diff.set_field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None);</span>
-    <span class="doccomment">/// op_build_diff.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_build_diff.apply(&amp;x, &amp;mut qdata_diff);</span>
+    <span class="doccomment">/// ceed.operator(&amp;qf_build_diff, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;dx&quot;, &amp;rx, &amp;bx, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;weights&quot;, ElemRestrictionOpt::None, &amp;bx, VectorOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, VectorOpt::Active)</span>
+    <span class="doccomment">///     .apply(&amp;x, &amp;mut qdata_diff);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Application operator</span>
-    <span class="doccomment">/// let mut op_composite = ceed.composite_operator();</span>
-    <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
-    <span class="doccomment">/// let mut op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_mass);</span>
-    <span class="doccomment">/// op_mass.set_field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// op_composite.add_sub_operator(&amp;op_mass);</span>
+    <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;u&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_mass)</span>
+    <span class="doccomment">///     .field(&quot;v&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_diff = ceed.q_function_interior_by_name(&quot;Poisson1DApply&quot;);</span>
-    <span class="doccomment">/// let mut op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op_diff.set_field(&quot;du&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
-    <span class="doccomment">/// op_diff.set_field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_diff);</span>
-    <span class="doccomment">/// op_diff.set_field(&quot;dv&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
+    <span class="doccomment">/// let op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None)</span>
+    <span class="doccomment">///     .field(&quot;du&quot;, &amp;ru, &amp;bu, VectorOpt::Active)</span>
+    <span class="doccomment">///     .field(&quot;qdata&quot;, &amp;rq, BasisOpt::Collocated, &amp;qdata_diff)</span>
+    <span class="doccomment">///     .field(&quot;dv&quot;, &amp;ru, &amp;bu, VectorOpt::Active);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// op_composite.add_sub_operator(&amp;op_diff);</span>
+    <span class="doccomment">/// let op_composite = ceed.composite_operator()</span>
+    <span class="doccomment">///     .sub_operator(&amp;op_mass)</span>
+    <span class="doccomment">///     .sub_operator(&amp;op_diff);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// v.set_value(1.0);</span>
     <span class="doccomment">/// op_composite.apply_add(&amp;u, &amp;mut v);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// // Check</span>
-    <span class="doccomment">/// let array = v.view();</span>
-    <span class="doccomment">/// let mut sum = 0.0;</span>
-    <span class="doccomment">/// for i in 0..ndofs {</span>
-    <span class="doccomment">///   sum += array[i];</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// let sum: f64 = v.view().iter().sum();</span>
     <span class="doccomment">/// assert!((sum - (2.0 + ndofs as f64)).abs() &lt; 1e-15, &quot;Incorrect interval length computed&quot;);</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply_add</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">Vector</span>, <span class="ident">output</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>) {
@@ -3341,14 +3207,16 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_mass = ceed.q_function_interior_by_name(&quot;MassApply&quot;);</span>
     <span class="doccomment">/// let op_mass = ceed.operator(&amp;qf_mass, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op.add_sub_operator(&amp;op_mass);</span>
+    <span class="doccomment">/// op = op.sub_operator(&amp;op_mass);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let qf_diff = ceed.q_function_interior_by_name(&quot;Poisson1DApply&quot;);</span>
     <span class="doccomment">/// let op_diff = ceed.operator(&amp;qf_diff, QFunctionOpt::None, QFunctionOpt::None);</span>
-    <span class="doccomment">/// op.add_sub_operator(&amp;op_diff);</span>
+    <span class="doccomment">/// op = op.sub_operator(&amp;op_diff);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_sub_operator</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">subop</span>: <span class="kw-2">&amp;</span><span class="ident">Operator</span>) {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_mut</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sub_operator</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">subop</span>: <span class="kw-2">&amp;</span><span class="ident">Operator</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedCompositeOperatorAddSub</span>(<span class="self">self</span>.<span class="ident">op_core</span>.<span class="ident">ptr</span>, <span class="ident">subop</span>.<span class="ident">op_core</span>.<span class="ident">ptr</span>) };
+        <span class="self">self</span>
     }
 
     <span class="doccomment">/// Assemble the diagonal of a square linear Operator</span>

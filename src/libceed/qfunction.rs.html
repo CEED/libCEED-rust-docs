@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/qfunction.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>qfunction.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/qfunction.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>qfunction.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -527,8 +527,6 @@
 <span id="524">524</span>
 <span id="525">525</span>
 <span id="526">526</span>
-<span id="527">527</span>
-<span id="528">528</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -548,6 +546,8 @@
 
 <span class="doccomment">//! A Ceed QFunction represents the spatial terms of the point-wise functions</span>
 <span class="doccomment">//! describing the physics at the quadrature points.</span>
+
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">pin</span>::<span class="ident">Pin</span>;
 
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">prelude</span>::<span class="kw-2">*</span>;
 
@@ -603,13 +603,13 @@
     <span class="ident">number_outputs</span>: <span class="ident">usize</span>,
     <span class="ident">input_sizes</span>: [<span class="ident">i32</span>; <span class="ident">MAX_QFUNCTION_FIELDS</span>],
     <span class="ident">output_sizes</span>: [<span class="ident">i32</span>; <span class="ident">MAX_QFUNCTION_FIELDS</span>],
+    <span class="ident">user_f</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">QFunctionUserClosure</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">QFunction</span> {
     <span class="ident">qf_core</span>: <span class="ident">QFunctionCore</span>,
     <span class="ident">qf_ctx_ptr</span>: <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionContext</span>,
-    <span class="ident">trampoline_data</span>: <span class="ident">QFunctionTrampolineData</span>,
-    <span class="ident">user_f</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">QFunctionUserClosure</span><span class="op">&gt;</span>,
+    <span class="ident">trampoline_data</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">QFunctionTrampolineData</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">QFunctionByName</span> {
@@ -634,7 +634,6 @@
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionContextDestroy</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">qf_ctx_ptr</span>);
         }
-        <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">qf_core</span>);
     }
 }
 
@@ -674,12 +673,10 @@
 <span class="doccomment">///   0</span>
 <span class="doccomment">/// };</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// qf.add_input(&quot;u&quot;, 1, EvalMode::Interp);</span>
-<span class="doccomment">/// qf.add_input(&quot;weights&quot;, 1, EvalMode::Weight);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// qf.add_output(&quot;v&quot;, 1, EvalMode::Interp);</span>
+<span class="doccomment">/// let qf = ceed.q_function_interior(1, Box::new(user_f))</span>
+<span class="doccomment">///     .input(&quot;u&quot;, 1, EvalMode::Interp)</span>
+<span class="doccomment">///     .input(&quot;weights&quot;, 1, EvalMode::Weight)</span>
+<span class="doccomment">///     .output(&quot;v&quot;, 1, EvalMode::Interp);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// println!(&quot;{}&quot;, qf);</span>
 <span class="doccomment">/// ```</span>
@@ -742,8 +739,7 @@
     <span class="ident">inputs</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedScalar</span>,
     <span class="ident">outputs</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedScalar</span>,
 ) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span> {
-    <span class="kw">let</span> <span class="ident">context</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span>(<span class="ident">ctx</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">QFunction</span>);
-    <span class="kw">let</span> <span class="ident">trampoline_data</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">trampoline_data</span>;
+    <span class="kw">let</span> <span class="ident">trampoline_data</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">QFunctionTrampolineData</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">ctx</span>);
 
     <span class="comment">// Inputs</span>
     <span class="kw">let</span> <span class="ident">inputs_slice</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">*</span><span class="kw">const</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedScalar</span>] <span class="op">=</span>
@@ -773,7 +769,7 @@
         .<span class="ident">for_each</span>(<span class="op">|</span>(<span class="ident">x</span>, <span class="ident">a</span>)<span class="op">|</span> <span class="kw-2">*</span><span class="ident">a</span> <span class="op">=</span> <span class="ident">x</span>);
 
     <span class="comment">// User closure</span>
-    (<span class="ident">context</span>.<span class="ident">user_f</span>)(<span class="ident">inputs_array</span>, <span class="ident">outputs_array</span>)
+    (<span class="ident">trampoline_data</span>.<span class="ident">get_unchecked_mut</span>().<span class="ident">user_f</span>)(<span class="ident">inputs_array</span>, <span class="ident">outputs_array</span>)
 }
 
 <span class="comment">// -----------------------------------------------------------------------------</span>
@@ -790,11 +786,14 @@
         <span class="kw">let</span> <span class="ident">number_outputs</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">let</span> <span class="ident">input_sizes</span> <span class="op">=</span> [<span class="number">0</span>; <span class="ident">MAX_QFUNCTION_FIELDS</span>];
         <span class="kw">let</span> <span class="ident">output_sizes</span> <span class="op">=</span> [<span class="number">0</span>; <span class="ident">MAX_QFUNCTION_FIELDS</span>];
-        <span class="kw">let</span> <span class="ident">trampoline_data</span> <span class="op">=</span> <span class="ident">QFunctionTrampolineData</span> {
-            <span class="ident">number_inputs</span>,
-            <span class="ident">number_outputs</span>,
-            <span class="ident">input_sizes</span>,
-            <span class="ident">output_sizes</span>,
+        <span class="kw">let</span> <span class="ident">trampoline_data</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">Pin</span>::<span class="ident">new_unchecked</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">QFunctionTrampolineData</span> {
+                <span class="ident">number_inputs</span>,
+                <span class="ident">number_outputs</span>,
+                <span class="ident">input_sizes</span>,
+                <span class="ident">output_sizes</span>,
+                <span class="ident">user_f</span>,
+            }))
         };
 
         <span class="comment">// Create QFunction</span>
@@ -808,18 +807,6 @@
             )
         };
 
-        <span class="comment">// Create QFunction context</span>
-        <span class="kw">let</span> <span class="ident">qf_ctx_ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
-
-        <span class="comment">// Create object</span>
-        <span class="kw">let</span> <span class="ident">qf_core</span> <span class="op">=</span> <span class="ident">QFunctionCore</span> { <span class="ident">ptr</span> };
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qf_self</span> <span class="op">=</span> <span class="self">Self</span> {
-            <span class="ident">qf_core</span>,
-            <span class="ident">qf_ctx_ptr</span>,
-            <span class="ident">trampoline_data</span>,
-            <span class="ident">user_f</span>,
-        };
-
         <span class="comment">// Set closure</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qf_ctx_ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
         <span class="kw">unsafe</span> {
@@ -828,13 +815,16 @@
                 <span class="ident">qf_ctx_ptr</span>,
                 <span class="kw">crate</span>::<span class="ident">MemType</span>::<span class="ident">Host</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedMemType</span>,
                 <span class="kw">crate</span>::<span class="ident">CopyMode</span>::<span class="ident">UsePointer</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedCopyMode</span>,
-                <span class="number">10</span>, <span class="comment">/* Note: size not relevant - CPU only approach */</span>
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qf_self</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>,
+                <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">QFunctionTrampolineData</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u64</span>,
+                <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">trampoline_data</span>.<span class="ident">as_ref</span>()),
             );
-            <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionSetContext</span>(<span class="ident">qf_self</span>.<span class="ident">qf_core</span>.<span class="ident">ptr</span>, <span class="ident">qf_ctx_ptr</span>);
+            <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionSetContext</span>(<span class="ident">ptr</span>, <span class="ident">qf_ctx_ptr</span>);
         }
-        <span class="ident">qf_self</span>.<span class="ident">qf_ctx_ptr</span> <span class="op">=</span> <span class="ident">qf_ctx_ptr</span>;
-        <span class="ident">qf_self</span>
+        <span class="self">Self</span> {
+            <span class="ident">qf_core</span>: <span class="ident">QFunctionCore</span> { <span class="ident">ptr</span> },
+            <span class="ident">qf_ctx_ptr</span>,
+            <span class="ident">trampoline_data</span>,
+        }
     }
 
     <span class="doccomment">/// Apply the action of a QFunction</span>
@@ -861,22 +851,20 @@
     <span class="doccomment">///   0</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
+    <span class="doccomment">/// let qf = ceed.q_function_interior(1, Box::new(user_f))</span>
+    <span class="doccomment">///     .input(&quot;u&quot;, 1, EvalMode::Interp)</span>
+    <span class="doccomment">///     .input(&quot;weights&quot;, 1, EvalMode::Weight)</span>
+    <span class="doccomment">///     .output(&quot;v&quot;, 1, EvalMode::Interp);</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// qf.add_input(&quot;u&quot;, 1, EvalMode::Interp);</span>
-    <span class="doccomment">/// qf.add_input(&quot;weights&quot;, 1, EvalMode::Weight);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// qf.add_output(&quot;v&quot;, 1, EvalMode::Interp);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// const Q : usize = 8;</span>
+    <span class="doccomment">/// const Q: usize = 8;</span>
     <span class="doccomment">/// let mut w = [0.; Q];</span>
     <span class="doccomment">/// let mut u = [0.; Q];</span>
     <span class="doccomment">/// let mut v = [0.; Q];</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// for i in 0..Q as usize {</span>
-    <span class="doccomment">///   let x = 2.*(i as f64)/((Q as f64) - 1.) - 1.;</span>
-    <span class="doccomment">///   u[i] = 2. + 3.*x + 5.*x*x;</span>
-    <span class="doccomment">///   w[i] = 1. - x*x;</span>
+    <span class="doccomment">///   let x = 2. * (i as f64)/((Q as f64) - 1.) - 1.;</span>
+    <span class="doccomment">///   u[i] = 2. + 3. * x + 5. * x * x;</span>
+    <span class="doccomment">///   w[i] = 1. - x * x;</span>
     <span class="doccomment">///   v[i] = u[i] * w[i];</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
@@ -891,12 +879,14 @@
     <span class="doccomment">///   vv = output.remove(0);</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let array = vv.view();</span>
-    <span class="doccomment">/// for i in 0..Q {</span>
-    <span class="doccomment">///   assert_eq!(array[i], v[i], &quot;Incorrect value in QFunction application&quot;);</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// vv.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .zip(v.iter())</span>
+    <span class="doccomment">///     .for_each(|(computed, actual)| {</span>
+    <span class="doccomment">///         assert_eq!(*computed, *actual, &quot;Incorrect value in QFunction application&quot;);</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">Q</span>: <span class="ident">i32</span>, <span class="ident">u</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>], <span class="ident">v</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>]) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">Q</span>: <span class="ident">i32</span>, <span class="ident">u</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>], <span class="ident">v</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>]) {
         <span class="self">self</span>.<span class="ident">qf_core</span>.<span class="ident">apply</span>(<span class="ident">Q</span>, <span class="ident">u</span>, <span class="ident">v</span>)
     }
 
@@ -929,17 +919,19 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// qf.add_input(&quot;u&quot;, 1, EvalMode::Interp);</span>
-    <span class="doccomment">/// qf.add_input(&quot;weights&quot;, 1, EvalMode::Weight);</span>
+    <span class="doccomment">/// qf = qf.input(&quot;u&quot;, 1, EvalMode::Interp);</span>
+    <span class="doccomment">/// qf = qf.input(&quot;weights&quot;, 1, EvalMode::Weight);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_input</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">fieldname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">size</span>: <span class="ident">i32</span>, <span class="ident">emode</span>: <span class="kw">crate</span>::<span class="ident">EvalMode</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">fieldname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">size</span>: <span class="ident">i32</span>, <span class="ident">emode</span>: <span class="kw">crate</span>::<span class="ident">EvalMode</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">name_c</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">fieldname</span>).<span class="ident">expect</span>(<span class="string">&quot;CString::new failed&quot;</span>);
-        <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">input_sizes</span>[<span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">number_inputs</span>] <span class="op">=</span> <span class="ident">size</span>;
+        <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">number_inputs</span>;
+        <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">input_sizes</span>[<span class="ident">idx</span>] <span class="op">=</span> <span class="ident">size</span>;
         <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">number_inputs</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">emode</span> <span class="op">=</span> <span class="ident">emode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode</span>;
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionAddInput</span>(<span class="self">self</span>.<span class="ident">qf_core</span>.<span class="ident">ptr</span>, <span class="ident">name_c</span>.<span class="ident">as_ptr</span>(), <span class="ident">size</span>, <span class="ident">emode</span>);
         }
+        <span class="self">self</span>
     }
 
     <span class="doccomment">/// Add a QFunction output</span>
@@ -971,16 +963,18 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// let mut qf = ceed.q_function_interior(1, Box::new(user_f));</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// qf.add_output(&quot;v&quot;, 1, EvalMode::Interp);</span>
+    <span class="doccomment">/// qf.output(&quot;v&quot;, 1, EvalMode::Interp);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_output</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">fieldname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">size</span>: <span class="ident">i32</span>, <span class="ident">emode</span>: <span class="kw">crate</span>::<span class="ident">EvalMode</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">output</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">fieldname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">size</span>: <span class="ident">i32</span>, <span class="ident">emode</span>: <span class="kw">crate</span>::<span class="ident">EvalMode</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">name_c</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">fieldname</span>).<span class="ident">expect</span>(<span class="string">&quot;CString::new failed&quot;</span>);
-        <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">output_sizes</span>[<span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">number_outputs</span>] <span class="op">=</span> <span class="ident">size</span>;
+        <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">number_outputs</span>;
+        <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">output_sizes</span>[<span class="ident">idx</span>] <span class="op">=</span> <span class="ident">size</span>;
         <span class="self">self</span>.<span class="ident">trampoline_data</span>.<span class="ident">number_outputs</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
         <span class="kw">let</span> <span class="ident">emode</span> <span class="op">=</span> <span class="ident">emode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode</span>;
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedQFunctionAddOutput</span>(<span class="self">self</span>.<span class="ident">qf_core</span>.<span class="ident">ptr</span>, <span class="ident">name_c</span>.<span class="ident">as_ptr</span>(), <span class="ident">size</span>, <span class="ident">emode</span>);
         }
+        <span class="self">self</span>
     }
 }
 
@@ -1047,10 +1041,12 @@
     <span class="doccomment">///   vv = output.remove(0);</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// let array = vv.view();</span>
-    <span class="doccomment">/// for i in 0..Q {</span>
-    <span class="doccomment">///   assert_eq!(array[i], v[i], &quot;Incorrect value in QFunction application&quot;);</span>
-    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// vv.view()</span>
+    <span class="doccomment">///     .iter()</span>
+    <span class="doccomment">///     .zip(v.iter())</span>
+    <span class="doccomment">///     .for_each(|(computed, actual)| {</span>
+    <span class="doccomment">///         assert_eq!(*computed, *actual, &quot;Incorrect value in QFunction application&quot;);</span>
+    <span class="doccomment">///     });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">Q</span>: <span class="ident">i32</span>, <span class="ident">u</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>], <span class="ident">v</span>: <span class="kw-2">&amp;</span>[<span class="ident">Vector</span>]) {
         <span class="self">self</span>.<span class="ident">qf_core</span>.<span class="ident">apply</span>(<span class="ident">Q</span>, <span class="ident">u</span>, <span class="ident">v</span>)
