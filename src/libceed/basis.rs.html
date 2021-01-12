@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/basis.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>basis.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `rust/src/basis.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>basis.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
 <link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../libceed/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
@@ -313,6 +313,17 @@
 <span id="310">310</span>
 <span id="311">311</span>
 <span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright (c) 2017, Lawrence Livermore National Security, LLC. Produced at</span>
 <span class="comment">// the Lawrence Livermore National Laboratory. LLNL-CODE-734707. All Rights</span>
@@ -422,7 +433,12 @@
         <span class="ident">qweight1d</span>: <span class="kw-2">&amp;</span>[<span class="ident">f64</span>],
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
-        <span class="kw">let</span> (<span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P1d</span>, <span class="ident">Q1d</span>) <span class="op">=</span> (<span class="ident">dim</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">ncomp</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">P1d</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">Q1d</span> <span class="kw">as</span> <span class="ident">i32</span>);
+        <span class="kw">let</span> (<span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P1d</span>, <span class="ident">Q1d</span>) <span class="op">=</span> (
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">dim</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">ncomp</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">P1d</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">Q1d</span>).<span class="ident">unwrap</span>(),
+        );
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisCreateTensorH1</span>(
                 <span class="ident">ceed</span>.<span class="ident">ptr</span>,
@@ -449,8 +465,13 @@
         <span class="ident">qmode</span>: <span class="kw">crate</span>::<span class="ident">QuadMode</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
-        <span class="kw">let</span> (<span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P</span>, <span class="ident">Q</span>) <span class="op">=</span> (<span class="ident">dim</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">ncomp</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">P</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">Q</span> <span class="kw">as</span> <span class="ident">i32</span>);
-        <span class="kw">let</span> <span class="ident">qmode</span> <span class="op">=</span> <span class="ident">qmode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedQuadMode</span>;
+        <span class="kw">let</span> (<span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P</span>, <span class="ident">Q</span>, <span class="ident">qmode</span>) <span class="op">=</span> (
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">dim</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">ncomp</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">P</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">Q</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">qmode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedQuadMode</span>,
+        );
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisCreateTensorH1Lagrange</span>(<span class="ident">ceed</span>.<span class="ident">ptr</span>, <span class="ident">dim</span>, <span class="ident">ncomp</span>, <span class="ident">P</span>, <span class="ident">Q</span>, <span class="ident">qmode</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ptr</span>);
         }
@@ -471,9 +492,9 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">null_mut</span>();
         <span class="kw">let</span> (<span class="ident">topo</span>, <span class="ident">ncomp</span>, <span class="ident">nnodes</span>, <span class="ident">nqpts</span>) <span class="op">=</span> (
             <span class="ident">topo</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedElemTopology</span>,
-            <span class="ident">ncomp</span> <span class="kw">as</span> <span class="ident">i32</span>,
-            <span class="ident">nnodes</span> <span class="kw">as</span> <span class="ident">i32</span>,
-            <span class="ident">nqpts</span> <span class="kw">as</span> <span class="ident">i32</span>,
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">ncomp</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">nnodes</span>).<span class="ident">unwrap</span>(),
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">nqpts</span>).<span class="ident">unwrap</span>(),
         );
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisCreateH1</span>(
@@ -540,13 +561,14 @@
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">apply</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">nelem</span>: <span class="ident">i32</span>,
+        <span class="ident">nelem</span>: <span class="ident">usize</span>,
         <span class="ident">tmode</span>: <span class="ident">TransposeMode</span>,
         <span class="ident">emode</span>: <span class="ident">EvalMode</span>,
         <span class="ident">u</span>: <span class="kw-2">&amp;</span><span class="ident">Vector</span>,
         <span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vector</span>,
     ) {
-        <span class="kw">let</span> (<span class="ident">tmode</span>, <span class="ident">emode</span>) <span class="op">=</span> (
+        <span class="kw">let</span> (<span class="ident">nelem</span>, <span class="ident">tmode</span>, <span class="ident">emode</span>) <span class="op">=</span> (
+            <span class="ident">i32</span>::<span class="ident">try_from</span>(<span class="ident">nelem</span>).<span class="ident">unwrap</span>(),
             <span class="ident">tmode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedTransposeMode</span>,
             <span class="ident">emode</span> <span class="kw">as</span> <span class="ident">bind_ceed</span>::<span class="ident">CeedEvalMode</span>,
         );
@@ -562,12 +584,12 @@
     <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(dim, 1, 3, 4, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let d = b.dimension();</span>
-    <span class="doccomment">/// assert_eq!(d, dim as i32, &quot;Incorrect dimension&quot;);</span>
+    <span class="doccomment">/// assert_eq!(d, dim, &quot;Incorrect dimension&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dimension</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dimension</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dim</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisGetDimension</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">dim</span>) };
-        <span class="ident">dim</span>
+        <span class="ident">usize</span>::<span class="ident">try_from</span>(<span class="ident">dim</span>).<span class="ident">unwrap</span>()
     }
 
     <span class="doccomment">/// Returns number of components for given CeedBasis</span>
@@ -579,12 +601,12 @@
     <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(1, ncomp, 3, 4, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let n = b.num_components();</span>
-    <span class="doccomment">/// assert_eq!(n, ncomp as i32, &quot;Incorrect number of components&quot;);</span>
+    <span class="doccomment">/// assert_eq!(n, ncomp, &quot;Incorrect number of components&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_components</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_components</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ncomp</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisGetNumComponents</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ncomp</span>) };
-        <span class="ident">ncomp</span>
+        <span class="ident">usize</span>::<span class="ident">try_from</span>(<span class="ident">ncomp</span>).<span class="ident">unwrap</span>()
     }
 
     <span class="doccomment">/// Returns total number of nodes (in dim dimensions) of a CeedBasis</span>
@@ -596,12 +618,12 @@
     <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(2, 1, p, 4, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let nnodes = b.num_nodes();</span>
-    <span class="doccomment">/// assert_eq!(nnodes, (p * p) as i32, &quot;Incorrect number of nodes&quot;);</span>
+    <span class="doccomment">/// assert_eq!(nnodes, p * p, &quot;Incorrect number of nodes&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_nodes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_nodes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">nnodes</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> { <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisGetNumNodes</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">nnodes</span>) };
-        <span class="ident">nnodes</span>
+        <span class="ident">usize</span>::<span class="ident">try_from</span>(<span class="ident">nnodes</span>).<span class="ident">unwrap</span>()
     }
 
     <span class="doccomment">/// Returns total number of quadrature points (in dim dimensions) of a</span>
@@ -614,14 +636,14 @@
     <span class="doccomment">/// let b = ceed.basis_tensor_H1_Lagrange(2, 1, 3, q, QuadMode::Gauss);</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// let nqpts = b.num_quadrature_points();</span>
-    <span class="doccomment">/// assert_eq!(nqpts, (q * q) as i32, &quot;Incorrect number of quadrature points&quot;);</span>
+    <span class="doccomment">/// assert_eq!(nqpts, q * q, &quot;Incorrect number of quadrature points&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_quadrature_points</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_quadrature_points</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">Q</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">unsafe</span> {
             <span class="ident">bind_ceed</span>::<span class="ident">CeedBasisGetNumQuadraturePoints</span>(<span class="self">self</span>.<span class="ident">ptr</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Q</span>);
         }
-        <span class="ident">Q</span>
+        <span class="ident">usize</span>::<span class="ident">try_from</span>(<span class="ident">Q</span>).<span class="ident">unwrap</span>()
     }
 }
 
