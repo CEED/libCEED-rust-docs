@@ -1,3 +1,3 @@
 (function() {var implementors = {};
-implementors["libceed"] = [{"text":"impl&lt;'a&gt; DerefMut for VectorViewMut&lt;'a&gt;","synthetic":false,"types":[]}];
+implementors["libceed"] = [{"text":"impl&lt;'a&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/ops/deref/trait.DerefMut.html\" title=\"trait core::ops::deref::DerefMut\">DerefMut</a> for <a class=\"struct\" href=\"libceed/vector/struct.VectorViewMut.html\" title=\"struct libceed::vector::VectorViewMut\">VectorViewMut</a>&lt;'a&gt;","synthetic":false,"types":["libceed::vector::VectorViewMut"]}];
 if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

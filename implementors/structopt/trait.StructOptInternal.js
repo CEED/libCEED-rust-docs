@@ -1,4 +1,4 @@
 (function() {var implementors = {};
-implementors["ex1_volume"] = [{"text":"impl StructOptInternal for Opt","synthetic":false,"types":[]}];
-implementors["ex2_surface"] = [{"text":"impl StructOptInternal for Opt","synthetic":false,"types":[]}];
+implementors["ex1_volume"] = [{"text":"impl StructOptInternal for <a class=\"struct\" href=\"ex1_volume/opt/struct.Opt.html\" title=\"struct ex1_volume::opt::Opt\">Opt</a>","synthetic":false,"types":["ex1_volume::opt::Opt"]}];
+implementors["ex2_surface"] = [{"text":"impl StructOptInternal for <a class=\"struct\" href=\"ex2_surface/opt/struct.Opt.html\" title=\"struct ex2_surface::opt::Opt\">Opt</a>","synthetic":false,"types":["ex2_surface::opt::Opt"]}];
 if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
